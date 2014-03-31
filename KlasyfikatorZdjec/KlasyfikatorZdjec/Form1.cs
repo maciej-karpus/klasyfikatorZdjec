@@ -13,6 +13,8 @@ namespace KlasyfikatorZdjec
 {
     public partial class Form1 : Form
     {
+        private string directoryOfOperations;
+
         public Form1()
         {
             InitializeComponent();
@@ -101,6 +103,28 @@ namespace KlasyfikatorZdjec
         public bool ThumbnailCallback()
         {
             return true;
+        }
+
+        private void directoryPicker_Click(object sender, EventArgs e)
+        {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (!string.IsNullOrEmpty(directoryOfOperations))
+                dialog.SelectedPath = directoryOfOperations;
+
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            if (!string.IsNullOrEmpty(dialog.SelectedPath))
+                directoryOfOperations = dialog.SelectedPath;
+
+            listView.Clear();
+            loadImages(directoryOfOperations);
+
+            chosenDirectoryBox.Text = directoryOfOperations;
+        }
+
+        private void refreshImagesButton_Click(object sender, EventArgs e)
+        {
+            listView.Clear();
+            loadImages(directoryOfOperations);
         }
     }
 }
