@@ -34,6 +34,7 @@ namespace KlasyfikatorZdjec
             {
                 Image img = Image.FromFile(file);
                 imageList.Images.Add(getThumbnailImage(imageList.ImageSize.Width, img));
+                img.Dispose();
                 listView.Items.Add(file);
                 listView.Items[i].ImageIndex = i;
                 i++;
