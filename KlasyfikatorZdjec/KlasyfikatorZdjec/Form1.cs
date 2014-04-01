@@ -115,7 +115,8 @@ namespace KlasyfikatorZdjec
             if (!string.IsNullOrEmpty(dialog.SelectedPath))
                 directoryOfOperations = dialog.SelectedPath;
 
-            listView.Clear();
+            imageList.Images.Clear();
+            listView.Items.Clear();
             loadImages(directoryOfOperations);
 
             chosenDirectoryBox.Text = directoryOfOperations;
@@ -123,7 +124,8 @@ namespace KlasyfikatorZdjec
 
         private void refreshImagesButton_Click(object sender, EventArgs e)
         {
-            listView.Clear();
+            imageList.Images.Clear();
+            listView.Items.Clear();
             loadImages(directoryOfOperations);
         }
     }
