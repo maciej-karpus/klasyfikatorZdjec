@@ -113,20 +113,25 @@ namespace KlasyfikatorZdjec
 
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
             if (!string.IsNullOrEmpty(dialog.SelectedPath))
+            {
                 directoryOfOperations = dialog.SelectedPath;
 
-            imageList.Images.Clear();
-            listView.Items.Clear();
-            loadImages(directoryOfOperations);
+                imageList.Images.Clear();
+                listView.Items.Clear();
+                loadImages(directoryOfOperations);
 
-            chosenDirectoryBox.Text = directoryOfOperations;
+                chosenDirectoryBox.Text = directoryOfOperations;
+            }
         }
 
         private void refreshImagesButton_Click(object sender, EventArgs e)
         {
-            imageList.Images.Clear();
-            listView.Items.Clear();
-            loadImages(directoryOfOperations);
+            if (!string.IsNullOrEmpty(directoryOfOperations))
+            {
+                imageList.Images.Clear();
+                listView.Items.Clear();
+                loadImages(directoryOfOperations);
+            }
         }
     }
 }
