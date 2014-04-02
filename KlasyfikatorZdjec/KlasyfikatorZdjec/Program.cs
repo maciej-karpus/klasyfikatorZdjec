@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,17 @@ namespace KlasyfikatorZdjec
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            TestXMLParser();
+        }
+
+        static void TestXMLParser()
+        {
+             var mList = new List<classifiedImage>();
+             mList.Add(new classifiedImage(false, @"C:/test", 3, 0.94f));
+             mList.Add(new classifiedImage(true, @"C:/test2", 2, 0.1f));
+             mList.Add(new classifiedImage(true, @"C:/test3", 42, 0.22f));
+             XMLParser.serialize(mList);
+             var deserializedList = XMLParser.deserialize();
         }
     }
 }
