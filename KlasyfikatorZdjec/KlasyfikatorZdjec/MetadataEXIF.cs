@@ -38,9 +38,13 @@ namespace KlasyfikatorZdjec
         string DateTimeTaken = null;
         int ImageSize = 0;
         ImageFormat ImageFormat = null;
-        double Latitude = 0.0; //Szerokosc geo
+        double LatitudeDegrees = 0.0; //Szerokosc geo
+        double LatitudeMinutes = 0.0;
+        double LatitudeSeconds = 0.0;
         string LatitudeRef = null; //W czy E
-        double Longitude = 0.0; //Dlugosc geo
+        double LongitudeDegrees = 0.0; //Dlugosc geo
+        double LongitudeMinutes = 0.0;
+        double LongitudeSeconds = 0.0;
         string LongitudeRef = null; //N czy S
         double Altitude = 0.0; //Wysokosc geo
         bool BelowSeaLevel = false; //0 Above Sea Level, 1 Below
@@ -102,9 +106,19 @@ namespace KlasyfikatorZdjec
             return this.ImageFormat;
         }
 
-        public double GetLatitude()
+        public double GetLatitudeDegrees()
         {
-            return this.Latitude;
+            return this.LatitudeDegrees;
+        }
+
+        public double GetLatitudeMinutes()
+        {
+            return this.LatitudeMinutes;
+        }
+
+        public double GetLatitudeSeconds()
+        {
+            return this.LatitudeSeconds;
         }
 
         public string GetLatitudeRef()
@@ -112,9 +126,19 @@ namespace KlasyfikatorZdjec
             return this.LatitudeRef;
         }
 
-        public double GetLongitude()
+        public double GetLongitudeDegrees()
         {
-            return this.Longitude;
+            return this.LongitudeDegrees;
+        }
+
+        public double GetLongitudeMinutes()
+        {
+            return this.LongitudeMinutes;
+        }
+
+        public double GetLongitudeSeconds()
+        {
+            return this.LongitudeSeconds;
         }
 
         public string GetLongitudeRef()
@@ -149,16 +173,6 @@ namespace KlasyfikatorZdjec
         }
 
 
-        /*void SetResolution()
-        {
-            PropertyItem resX = propItems.Where(s => s.Id == (int)Tags.PropertyTagImageWidth).DefaultIfEmpty(null).First();
-            if (resX != null)
-                Width = GetEncodedValue<int>(resX);
-            PropertyItem resY = propItems.Where(s => s.Id == (int)Tags.PropertyTagImageHeight).DefaultIfEmpty(null).First();
-            if (resY != null)
-                Height = GetEncodedValue<int>(resY);
-        }*/
-
         void SetISOSpeed()
         {
             PropertyItem iso = propItems.Where(s => s.Id == (int)Tags.PropertyTagExifISOSpeed).DefaultIfEmpty(null).First();
@@ -176,8 +190,20 @@ namespace KlasyfikatorZdjec
         public void SetGeoTags()
         {
             PropertyItem latitude = propItems.Where(s => s.Id == (int)Tags.PropertyTagGpsLatitude).DefaultIfEmpty(null).First();
-            if (latitude != null)
-                Latitude = GetEncodedValue<double>(latitude);
+            if (latitude != null) 
+            {
+                int A = BitConverter.ToInt32(latitude.Value, 0);
+                int B = BitConverter.ToInt32(latitude.Value, 4);
+                LatitudeDegrees = (double)A / B; ;
+                A = BitConverter.ToInt32(latitude.Value, 8);
+                B = BitConverter.ToInt32(latitude.Value, 12);
+                LatitudeMinutes = (double)A / B; ;
+                A = BitConverter.ToInt32(latitude.Value, 16);
+                B = BitConverter.ToInt32(latitude.Value, 20);
+                LatitudeSeconds = (double)A / B; ;
+
+            }
+                
 
             PropertyItem latitudeRef = propItems.Where(s => s.Id == (int)Tags.PropertyTagGpsLatitudeRef).DefaultIfEmpty(null).First();
             if (latitudeRef != null)
@@ -185,7 +211,17 @@ namespace KlasyfikatorZdjec
 
             PropertyItem longitude = propItems.Where(s => s.Id == (int)Tags.PropertyTagGpsLongitude).DefaultIfEmpty(null).First();
             if (longitude != null)
-                Longitude = GetEncodedValue<double>(longitude);
+            {
+                int A = BitConverter.ToInt32(longitude.Value, 0);
+                int B = BitConverter.ToInt32(longitude.Value, 4);
+                LongitudeDegrees = (double)A / B; ;
+                A = BitConverter.ToInt32(longitude.Value, 8);
+                B = BitConverter.ToInt32(longitude.Value, 12);
+                LongitudeMinutes = (double)A / B; ;
+                A = BitConverter.ToInt32(longitude.Value, 16);
+                B = BitConverter.ToInt32(longitude.Value, 20);
+                LongitudeSeconds = (double)A / B; ;
+            }
 
             PropertyItem longitudeRef = propItems.Where(s => s.Id == (int)Tags.PropertyTagGpsLongitudeRef).DefaultIfEmpty(null).First();
             if (longitudeRef != null)
