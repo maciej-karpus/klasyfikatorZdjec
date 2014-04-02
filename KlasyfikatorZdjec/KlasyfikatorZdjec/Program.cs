@@ -18,7 +18,7 @@ namespace KlasyfikatorZdjec
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            TestXMLParser();
+            //TestXMLParser();
         }
 
         static void TestXMLParser()
