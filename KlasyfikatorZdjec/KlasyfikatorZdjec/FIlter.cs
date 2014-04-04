@@ -10,13 +10,18 @@ namespace KlasyfikatorZdjec
     {
         public static string[] filter(bool[] filters, object[] values, List<classifiedImage> images)
         {
+            bool isMatched = false;
             for (int i = 0; i < filters.Length; i++)
             {
                 if (filters[i])
                 {
                     foreach (classifiedImage ci in images)
                     {
-                        if(ci.getProp(i) != values[i])
+                        if (values[i].GetType() == typeof(string))
+                            isMatched = values[i].Equals(ci.getProp(i));
+                        else
+                            isMatched = (ci.getProp(i) == values[i]);
+                        if(!isMatched)
                         {
                             images.Remove(ci);
                         }
