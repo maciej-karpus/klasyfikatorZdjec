@@ -12,7 +12,6 @@ namespace KlasyfikatorZdjec
         public static List<MetadataEXIF> PHOTOS_METADATA = new List<MetadataEXIF>();
         public static List<ClassifiedImage> PHOTOS_CLASSIFIED = new List<ClassifiedImage>();
 
-
         public static void classifyByMetadata()
         {
             foreach (MetadataEXIF photo in PHOTOS_METADATA)
@@ -34,26 +33,31 @@ namespace KlasyfikatorZdjec
                     cImg.dateTaken = photo.GetDateTimeTaken();
 
                     //Format
-                    cImg.format = photo.GetImageFormat() == ImageFormat.Bmp ? "BMP" :
-                        photo.GetImageFormat() == ImageFormat.Gif  ? "GIF" :
-                        photo.GetImageFormat() == ImageFormat.Jpeg ? "JPEG" :
-                        photo.GetImageFormat() == ImageFormat.Png  ? "PNG" :
-                        photo.GetImageFormat().ToString();
+                    ImageFormat imgForm = photo.GetImageFormat();
+                    cImg.format = ImageFormat.Bmp.Equals(imgForm) ? "BMP" :
+                        ImageFormat.Gif.Equals(imgForm)  ? "GIF" :
+                        ImageFormat.Jpeg.Equals(imgForm) ? "JPEG" :
+                        ImageFormat.Png.Equals(imgForm)  ? "PNG" :
+                        imgForm.ToString();
 
                     //ISO
                     cImg.iso = photo.GetISOSpeed() <= 200 ? "100 - 200" : photo.GetISOSpeed() <= 800 ? "200 - 800" : "> 800";
 
-                    //Szerokosc geo
-                    cImg.latitude = photo.GetLatitudeRef() + ": " + photo.GetLatitudeDegrees() + "° " + photo.GetLatitudeMinutes() + "' " + photo.GetLatitudeSeconds() + "\"";
-                    
-                    //Dlugosc geo
-                    cImg.longitude = photo.GetLongitudeRef() + ": " + photo.GetLongitudeDegrees() + "° " + photo.GetLongitudeMinutes() + "' " + photo.GetLongitudeSeconds() + "\"";
-                    
+                    //Czy w Polsce
+                    double latD = photo.GetLatitudeDegrees(), latM = photo.GetLatitudeMinutes(), lonD = photo.GetLongitudeDegrees(), lonM = photo.GetLongitudeMinutes();
+                    if (photo.GetLatitudeRef() == "N" && photo.GetLongitudeRef() == "E" &&
+                        (latD >= 49 ) &&
+                        (lonD > 14 || (lonD == 14 && lonM >= 7)) &&
+                        (latD < 54 || (latD == 54 && latM <= 50)) &&
+                        (lonD < 24 || (lonD == 24 && lonM <= 9))
+                    )
+                        cImg.isInPoland = true;
+                    else
+                        cImg.isInPoland = false;
+
                     //Wysokosc n.p.m.
-                    double seaLevel = photo.GetAltitude();
-                    if(photo.IsBelowSeaLevel() == true)
-                        seaLevel *= -1;
-                    cImg.altitude = seaLevel;
+                    cImg.isBelowSeaLevel = photo.IsBelowSeaLevel();
+
                 }
             }
 

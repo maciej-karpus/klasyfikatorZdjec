@@ -31,12 +31,10 @@ namespace KlasyfikatorZdjec
           public string dateTaken;
           [XmlAttribute("ISO")]
           public string iso;
-          [XmlAttribute("szerokoscGeo")]
-          public string latitude;
-          [XmlAttribute("dlugoscGeo")]
-          public string longitude;
+          [XmlAttribute("wspolrzGeo")]
+          public bool isInPoland;
           [XmlAttribute("poziomMorza")]
-          public double altitude;
+          public bool isBelowSeaLevel;
 
           [XmlAttribute("portret")]
           public bool isPortrait;

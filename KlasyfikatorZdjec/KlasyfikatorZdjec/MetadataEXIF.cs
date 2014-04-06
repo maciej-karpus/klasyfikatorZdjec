@@ -122,7 +122,7 @@ namespace KlasyfikatorZdjec
 
         public string GetLatitudeRef()
         {
-            return this.LatitudeRef;
+            return this.LatitudeRef.Substring(0,1);
         }
 
         public double GetLongitudeDegrees()
@@ -142,7 +142,7 @@ namespace KlasyfikatorZdjec
 
         public string GetLongitudeRef()
         {
-            return this.LongitudeRef;
+            return this.LongitudeRef.Substring(0,1);
         }
 
         public double GetAltitude()
