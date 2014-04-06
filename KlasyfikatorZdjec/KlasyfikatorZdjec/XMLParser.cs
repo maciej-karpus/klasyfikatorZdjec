@@ -12,14 +12,14 @@ namespace KlasyfikatorZdjec
 
           public XMLParser() {}
 
-          public static void serialize(List<classifiedImage> imgList, String pathToXML = defaultPath)
+          public static void serialize(List<ClassifiedImage> imgList, String pathToXML = defaultPath)
           {
-               classifiedImage[] imgArray = imgList.ToArray();
+               ClassifiedImage[] imgArray = imgList.ToArray();
                //Utworzenie/nadpisanie pliku
                var file = File.Create(defaultPath);
                file.Close();
                //Utworzenie serializatora XML
-               var serializer = new XmlSerializer(typeof(classifiedImage[]));            
+               var serializer = new XmlSerializer(typeof(ClassifiedImage[]));            
                //Puste xmlns:xsi i xmlns:xsd
                var xsn = new XmlSerializerNamespaces();
                xsn.Add(String.Empty, String.Empty);
@@ -35,14 +35,14 @@ namespace KlasyfikatorZdjec
                writer.Close();
           }
 
-          public static List<classifiedImage> deserialize()
+          public static List<ClassifiedImage> deserialize()
           {
-               classifiedImage[] imgArray;
+               ClassifiedImage[] imgArray;
                StreamReader reader = new StreamReader(defaultPath);
-               var serializer = new XmlSerializer(typeof(classifiedImage[]));
+               var serializer = new XmlSerializer(typeof(ClassifiedImage[]));
 
-               imgArray = (classifiedImage[]) serializer.Deserialize(reader);
-               return new List<classifiedImage>(imgArray);
+               imgArray = (ClassifiedImage[]) serializer.Deserialize(reader);
+               return new List<ClassifiedImage>(imgArray);
           }
      }
 }

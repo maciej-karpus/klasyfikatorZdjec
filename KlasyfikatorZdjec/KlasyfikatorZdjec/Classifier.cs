@@ -10,14 +10,14 @@ namespace KlasyfikatorZdjec
     static class Classifier
     {
         public static List<MetadataEXIF> PHOTOS_METADATA = new List<MetadataEXIF>();
-        public static List<classifiedImage> PHOTOS_CLASSIFIED = new List<classifiedImage>();
+        public static List<ClassifiedImage> PHOTOS_CLASSIFIED = new List<ClassifiedImage>();
 
 
         public static void classifyByMetadata()
         {
             foreach (MetadataEXIF photo in PHOTOS_METADATA)
             {
-                classifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == photo.GetPath());
+                ClassifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == photo.GetPath());
                 if (cImg != null) 
                 {
                     //Rozdzielczosc

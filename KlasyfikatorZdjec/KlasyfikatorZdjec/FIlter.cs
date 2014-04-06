@@ -8,14 +8,14 @@ namespace KlasyfikatorZdjec
 {
     public static class Filter
     {
-        public static string[] filter(bool[] filters, object[] values, List<classifiedImage> images)
+        public static string[] filter(bool[] filters, object[] values, List<ClassifiedImage> images)
         {
             bool isMatched = false;
             for (int i = 0; i < filters.Length; i++)
             {
                 if (filters[i])
                 {
-                    foreach (classifiedImage ci in images)
+                    foreach (ClassifiedImage ci in images)
                     {
                         if (values[i].GetType() == typeof(string))
                             isMatched = values[i].Equals(ci.getProp(i));
@@ -30,7 +30,7 @@ namespace KlasyfikatorZdjec
             }
             string[] files = new string[images.Count];
             int j = 0;
-            foreach (classifiedImage ci in images)
+            foreach (ClassifiedImage ci in images)
             {
                 files[j] = ci.path;
             }

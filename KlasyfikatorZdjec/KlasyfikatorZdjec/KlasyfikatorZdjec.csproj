@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classifiedImage.cs" />
+    <Compile Include="ClassifiedImage.cs" />
     <Compile Include="Classifier.cs" />
     <Compile Include="DetectFace.cs" />
     <Compile Include="FIlter.cs" />

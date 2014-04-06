@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace KlasyfikatorZdjec
 {
-     public class classifiedImage
+     public class ClassifiedImage
      {
           [XmlAttribute("natura")]
           public Boolean isNature;
@@ -39,12 +39,12 @@ namespace KlasyfikatorZdjec
           public double altitude;
 
           //Konstruktor bez argumentów wymagany do serializacji
-          public classifiedImage()
+          public ClassifiedImage()
           {
-               new classifiedImage(false, "", 0, 0f);
+               new ClassifiedImage(false, "", 0, 0f);
           }
 
-          public classifiedImage(Boolean isNature, String path, int faces, float blueVal)
+          public ClassifiedImage(Boolean isNature, String path, int faces, float blueVal)
           {
                this.isNature = isNature;
                this.path = path;
