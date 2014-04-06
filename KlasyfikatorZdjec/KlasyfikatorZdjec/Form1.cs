@@ -20,14 +20,19 @@ namespace KlasyfikatorZdjec
             InitializeComponent();
         }
 
-        private void loadImages(string directory)
+        private string[] getAllImagesFromDirectory(string directory)
         {
-            imageList.ImageSize = new Size(100, 100);
-            imageList.ColorDepth = ColorDepth.Depth32Bit;
-
             string[] extensions = { "jpg", "jpeg", "png", "bmp" };
             string[] files = Directory.GetFiles(directory, "*.*")
                 .Where(f => extensions.Contains(f.Split('.').Last().ToLower())).ToArray();
+
+            return files;
+        }
+
+        private void loadImages(string[] files)
+        {
+            imageList.ImageSize = new Size(100, 100);
+            imageList.ColorDepth = ColorDepth.Depth32Bit;
 
             int i = 0;
             foreach (string file in files)
@@ -119,7 +124,7 @@ namespace KlasyfikatorZdjec
 
                 imageList.Images.Clear();
                 listView.Items.Clear();
-                loadImages(directoryOfOperations);
+                loadImages(getAllImagesFromDirectory(directoryOfOperations));
 
                 chosenDirectoryBox.Text = directoryOfOperations;
             }
@@ -131,7 +136,7 @@ namespace KlasyfikatorZdjec
             {
                 imageList.Images.Clear();
                 listView.Items.Clear();
-                loadImages(directoryOfOperations);
+                loadImages(getAllImagesFromDirectory(directoryOfOperations));
             }
         }
     }

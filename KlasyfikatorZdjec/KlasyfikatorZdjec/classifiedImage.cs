@@ -51,5 +51,22 @@ namespace KlasyfikatorZdjec
                this.faces = faces;
                this.blueVal = blueVal;
           }
+
+          public object getProp(int i)
+          {
+              switch (i)
+              {
+                  case 0:
+                      return isNature;
+                  case 1:
+                      return path;
+                  case 2:
+                      return faces;
+                  case 3:
+                      return blueVal;
+                  default:
+                      return null;
+              }
+          }
      }
 }
