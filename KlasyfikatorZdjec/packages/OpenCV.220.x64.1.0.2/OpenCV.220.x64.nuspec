@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>OpenCV.220.x64</id>
+        <version>1.0.2</version>
+        <title>OpenCV 2.2.0 x64</title>
+        <authors>Wagner Leonardi</authors>
+        <projectUrl>http://opencv.org/</projectUrl>
+        <iconUrl>http://opencv.org/wp-content/themes/opencv/images/logo.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>This package employs the specific version of OpenCV 2.2.0 (2010), that is 40x smaller than current OpenCV versions.
+
+This package was made to only put OpenCV DLLs in project's bin folder. They will not be attached as project file.</description>
+        <summary>OpenCV 2.2.0 (2010 - without GPU)</summary>
+        <releaseNotes>x64</releaseNotes>
+        <tags>opencv</tags>
+        <dependencies>
+            <dependency id="Baseclass.Contrib.Nuget.Output" version="1.0.2" />
+        </dependencies>
+    </metadata>
+</package>

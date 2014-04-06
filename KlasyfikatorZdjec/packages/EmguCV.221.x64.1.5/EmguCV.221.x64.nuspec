@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>EmguCV.221.x64</id>
+        <version>1.5</version>
+        <title>EmguCV 2.2.1 x64</title>
+        <authors>Wagner Leonardi</authors>
+        <projectUrl>http://www.emgu.com/</projectUrl>
+        <iconUrl>http://www.emgu.com/wiki/files/EmguCVLogo.gif</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>OpenCV wrapper (included OpenCV 2.2.0)</description>
+        <summary>OpenCV wrapper (included OpenCV 2.2.0)</summary>
+        <releaseNotes>x64</releaseNotes>
+        <tags>emgucv, opencv</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+</package>

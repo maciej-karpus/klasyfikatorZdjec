@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Collections.Generic;
 using System.Globalization;
 
 namespace KlasyfikatorZdjec
@@ -154,6 +153,11 @@ namespace KlasyfikatorZdjec
         public bool IsBelowSeaLevel()
         {
             return this.BelowSeaLevel;
+        }
+
+        public string GetPath()
+        {
+            return this.path;
         }
 
         #endregion
