@@ -59,5 +59,15 @@ namespace KlasyfikatorZdjec
 
         }
 
+        public static void classifyByFaces()
+        {
+            bool isPortrait = false;
+            foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
+            {
+                cImg.faces = DetectFace.Run(cImg.path, ref isPortrait);
+                cImg.isPortrait = isPortrait;
+                cImg.isGroup = cImg.faces > 1 ? true : false;
+            }
+        }
     }
 }

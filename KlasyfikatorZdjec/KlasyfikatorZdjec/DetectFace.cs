@@ -13,7 +13,7 @@ namespace KlasyfikatorZdjec
     class DetectFace
     {
 
-        public static int Run(string path)
+        public static int Run(string path, ref bool isPortrait)
         {
 
             Image<Bgr, Byte> image = new Image<Bgr, byte>(path); //Read the files as an 8-bit Bgr image  
@@ -50,6 +50,16 @@ namespace KlasyfikatorZdjec
 
                 //dla kazdej znalezionej twarzy zmienna zwieksza sie
                 liczbaTwarzy = liczbaTwarzy+1;
+            }
+
+            // sprawdzanie czy portretowe
+            if (liczbaTwarzy == 1)
+            {
+                double ratio = (double)(facesDetected[0][0].rect.Height * facesDetected[0][0].rect.Width) / (double)(image.Height * image.Width);
+                if (ratio > 0.3)
+                {
+                    isPortrait = true;
+                }
             }
 
             ////messagebox z iloscia twarzy, pomocniczy do testow

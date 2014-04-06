@@ -38,6 +38,11 @@ namespace KlasyfikatorZdjec
           [XmlAttribute("poziomMorza")]
           public double altitude;
 
+          [XmlAttribute("portret")]
+          public bool isPortrait;
+          [XmlAttribute("grupa")]
+          public bool isGroup;
+
           //Konstruktor bez argumentów wymagany do serializacji
           public ClassifiedImage()
           {
