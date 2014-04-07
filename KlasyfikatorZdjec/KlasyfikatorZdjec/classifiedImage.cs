@@ -60,13 +60,19 @@ namespace KlasyfikatorZdjec
               switch (i)
               {
                   case 0:
-                      return isNature;
+                      return resolution;
                   case 1:
-                      return path;
+                      return format;
                   case 2:
-                      return faces;
+                      return cameraModel;
                   case 3:
-                      return blueVal;
+                      return iso;
+                  case 4:
+                      return isInPoland;
+                  case 5:
+                      return isBelowSeaLevel;
+                  case 6:
+                      return blueVal; // do ustalenia
                   default:
                       return null;
               }

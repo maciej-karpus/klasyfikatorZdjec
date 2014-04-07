@@ -139,5 +139,56 @@ namespace KlasyfikatorZdjec
                 loadImages(getAllImagesFromDirectory(directoryOfOperations));
             }
         }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            bool[] filters = new bool[7];
+            object[] values = new object[7];
+
+            for(int i=0; i<7; i++)
+            {
+                filters[i] = false;
+                values[i] = null;
+            }
+
+            if (resolutionCheckBox.Checked)
+            {
+                filters[0] = true;
+                values[0] = resolutionComboBox.SelectedText;
+            }
+            if (formatCheckBox.Checked)
+            {
+                filters[1] = true;
+                values[1] = formatComboBox.SelectedText;
+            }
+            if (cameraCheckBox.Checked)
+            {
+                filters[2] = true;
+                values[2] = cameraComboBox.SelectedText;
+            }
+            if (isoCheckBox.Checked)
+            {
+                filters[3] = true;
+                values[3] = null;
+            }
+            if (photosFromPolandCheckBox.Checked)
+            {
+                filters[4] = true;
+                values[4] = true;
+            }
+            if (belowSeaLevelCheckBox.Checked)
+            {
+                filters[5] = true;
+                values[5] = true;
+            }
+            if (mainColourCheckBox.Checked)
+            {
+                filters[6] = true;
+                values[6] = mainColourComboBox.SelectedText;
+            }
+
+            string[] files = Filter.filter(filters, values, Classifier.PHOTOS_CLASSIFIED);
+            loadImages(files);
+        }
     }
 }
