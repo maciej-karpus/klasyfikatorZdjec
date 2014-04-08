@@ -35,6 +35,8 @@ namespace KlasyfikatorZdjec
             // sprawdz czy jest plik xml w folderze (porownaj jego date modyfikacji z modyfikacja folderu (najnowszym zdjeciem))
             // jesli jest to wczytaj liste z niego, jesli nie - stworz nowego xmla i uzupelnij jednoczesnie liste UNCLASSIFIED_PHOTOS
 
+
+
             imageList.ImageSize = new Size(100, 100);
             imageList.ColorDepth = ColorDepth.Depth32Bit;
 
@@ -47,6 +49,32 @@ namespace KlasyfikatorZdjec
                 listView.Items.Add(file);
                 listView.Items[i].ImageIndex = i;
                 i++;
+
+                //Przypisanie wartosci do UnclassifedImages//
+                MetadataEXIF mexif = new MetadataEXIF(file);
+                Classifier.PHOTOS_METADATA.Add(mexif);
+                UnclassifiedImage uncImg = new UnclassifiedImage();
+                uncImg.path = mexif.GetPath();
+                uncImg.cameraModel = mexif.GetModel();
+                uncImg.dateTaken = mexif.GetDateTimeTaken();
+                uncImg.format = mexif.GetImageFormat();
+                uncImg.iso = mexif.GetISOSpeed();
+                uncImg.latitudeDegrees = mexif.GetLatitudeDegrees();
+                uncImg.latitudeMinutes = mexif.GetLatitudeMinutes();
+                uncImg.latitudeRef = mexif.GetLatitudeRef();
+                uncImg.latitudeSeconds = mexif.GetLatitudeSeconds();
+                uncImg.longitudeDegrees = mexif.GetLongitudeDegrees();
+                uncImg.longitudeMinutes = mexif.GetLongitudeMinutes();
+                uncImg.longitudeRef = mexif.GetLongitudeRef();
+                uncImg.resolutionX = mexif.GetWidth();
+                uncImg.resolutionY = mexif.GetHeight();
+                uncImg.size = mexif.GetImageSize();
+                uncImg.altitude = mexif.GetAltitude();
+                
+                Classifier.UNCLASSIFIED_PHOTOS.Add(uncImg);
+                ClassifiedImage cimg = new ClassifiedImage();
+                cimg.path = uncImg.path;
+                Classifier.PHOTOS_CLASSIFIED.Add(cimg);
             }
 
             listView.View = View.LargeIcon;
@@ -150,15 +178,15 @@ namespace KlasyfikatorZdjec
             
             if (resolutionCheckBox.Checked)
             {
-                filter.filterByResolution(resolutionComboBox.SelectedText);
+                filter.filterByResolution(resolutionComboBox.Text);
             }
             if (formatCheckBox.Checked)
             {
-                filter.filterByFormat(formatComboBox.SelectedText);
+                filter.filterByFormat(formatComboBox.Text);
             }
             if (cameraCheckBox.Checked)
             {
-                filter.filterByCameraModel(cameraComboBox.SelectedText);
+                filter.filterByCameraModel(cameraComboBox.Text);
             }
             // TODO
             if (isoCheckBox.Checked)
@@ -203,15 +231,19 @@ namespace KlasyfikatorZdjec
             foreach (ClassifiedImage ci in filter.images)
             {
                 files[j] = ci.path;
+                j++;
             }
 
+            listView.Clear();
+            imageList.Images.Clear();
             loadImages(files);
+            
         }
 
         private void startClassificationButton_Click(object sender, EventArgs e)
         {
-            Classifier.PHOTOS_CLASSIFIED = new List<ClassifiedImage>();
             Classifier.classifyByFaces();
+            Classifier.classifyByMetadata();
         }
     }
 }

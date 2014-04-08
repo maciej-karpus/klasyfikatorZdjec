@@ -26,7 +26,9 @@ namespace KlasyfikatorZdjec
         public int resolutionX;
         [XmlAttribute("rozdzielczoscY")]
         public int resolutionY;
-        
+
+        [XmlAttribute("rozmiar")]
+        public int size;
         [XmlAttribute("format")]
         public string format;
         [XmlAttribute("urzadzenie")]
@@ -35,17 +37,31 @@ namespace KlasyfikatorZdjec
         public string dateTaken;
         [XmlAttribute("ISO")]
         public int iso;
-        
-        [XmlAttribute("szerokoscGeo")]
-        public double latitude;
-        [XmlAttribute("dlugoscGeo")]
-        public double longitude;
+
+        [XmlAttribute("szerokoscGeoRef")]
+        public string latitudeRef;
+        [XmlAttribute("szerokoscGeoStopnie")]
+        public double latitudeDegrees;
+        [XmlAttribute("szerokoscGeoMinuty")]
+        public double latitudeMinutes;
+        [XmlAttribute("szerokoscGeoSekundy")]
+        public double latitudeSeconds;
+        [XmlAttribute("dlugoscGeoRef")]
+        public string longitudeRef;
+        [XmlAttribute("dlugoscGeoStopnie")]
+        public double longitudeDegrees;
+        [XmlAttribute("dlugoscGeoMinutes")]
+        public double longitudeMinutes;
+        [XmlAttribute("dlugoscGeoSeconds")]
+        public double longitudeSeconds;
         [XmlAttribute("wysokoscNadPozMorza")]
         public double altitude;
 
         public UnclassifiedImage(string path, int faces, double redVal, double greenVal, double blueVal,
             int resolutionX, int resolutionY, string format, string cameraModel, string dateTaken, int iso,
-            double latitude, double longitude, double altitude)
+            string latitudeRef, double latitudeDegrees, double latitudeMinutes, double latitudeSeconds,
+            string longitudeRef, double longitudeDegrees, double longitudeMinutes, double longitudeSeconds,
+            double altitude)
         {
             this.path = path;
             this.faces = faces;
@@ -58,14 +74,23 @@ namespace KlasyfikatorZdjec
             this.cameraModel = cameraModel;
             this.dateTaken = dateTaken;
             this.iso = iso;
-            this.latitude = latitude;
-            this.longitude = longitude;
+            this.latitudeRef = latitudeRef;
+            this.latitudeDegrees = latitudeDegrees;
+            this.latitudeMinutes = latitudeMinutes;
+            this.latitudeSeconds = latitudeSeconds;
+
+            this.longitudeRef = longitudeRef; 
+            this.longitudeDegrees = longitudeDegrees;
+            this.longitudeMinutes = longitudeMinutes;
+            this.longitudeSeconds = longitudeSeconds;
+
+
             this.altitude = altitude;
         }
 
         public UnclassifiedImage()
         {
-            new UnclassifiedImage("", 0, 0.0, 0.0, 0.0, 0, 0, "", "", "", 0, 0.0, 0.0, 0.0);
+            new UnclassifiedImage("", 0, 0.0, 0.0, 0.0, 0, 0, "", "", "", 0, "",  0.0, 0.0, 0.0, "", 0.0, 0.0, 0.0, 0.0);
         }
     }
 }

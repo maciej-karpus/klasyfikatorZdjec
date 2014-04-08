@@ -36,7 +36,7 @@ namespace KlasyfikatorZdjec
         short ISOSpeed = 0;
         string DateTimeTaken = null;
         int ImageSize = 0;
-        ImageFormat ImageFormat = null;
+        string ImgFormat = null;
         double LatitudeDegrees = 0.0; //Szerokosc geo
         double LatitudeMinutes = 0.0;
         double LatitudeSeconds = 0.0;
@@ -53,7 +53,12 @@ namespace KlasyfikatorZdjec
             this.path = path;
             Image img = new Bitmap(path);
             ImageSize = (int)new System.IO.FileInfo(path).Length;
-            ImageFormat = img.RawFormat;
+            ImageFormat imgForm = img.RawFormat;
+            ImgFormat = ImageFormat.Bmp.Equals(imgForm) ? "BMP" :
+                        ImageFormat.Gif.Equals(imgForm) ? "GIF" :
+                        ImageFormat.Jpeg.Equals(imgForm) ? "JPEG" :
+                        ImageFormat.Png.Equals(imgForm) ? "PNG" :
+                        imgForm.ToString();
             Height = img.Height;
             Width = img.Width;
             propItems = img.PropertyItems;
@@ -61,6 +66,7 @@ namespace KlasyfikatorZdjec
             SetISOSpeed();
             SetDateTimeTaken();
             SetGeoTags();
+            img.Dispose();
         }
 
 
@@ -100,9 +106,9 @@ namespace KlasyfikatorZdjec
             return this.ImageSize;
         }
 
-        public ImageFormat GetImageFormat()
+        public string GetImageFormat()
         {
-            return this.ImageFormat;
+            return this.ImgFormat;
         }
 
         public double GetLatitudeDegrees()
@@ -122,7 +128,10 @@ namespace KlasyfikatorZdjec
 
         public string GetLatitudeRef()
         {
-            return this.LatitudeRef.Substring(0,1);
+            if (LatitudeRef != null)
+                return this.LatitudeRef.Substring(0, 1);
+            else
+                return "";
         }
 
         public double GetLongitudeDegrees()
@@ -142,7 +151,10 @@ namespace KlasyfikatorZdjec
 
         public string GetLongitudeRef()
         {
-            return this.LongitudeRef.Substring(0,1);
+            if (LongitudeRef != null)
+                return this.LongitudeRef.Substring(0, 1);
+            else
+                return "";
         }
 
         public double GetAltitude()

@@ -24,7 +24,7 @@ namespace KlasyfikatorZdjec
             gray._EqualizeHist();
 
             //Read the HaarCascade objects
-            HaarCascade face = new HaarCascade("haarcascade_frontalface_alt_tree.xml");
+            HaarCascade face = new HaarCascade("..\\haarcascade_frontalface_alt_tree.xml");
 
             //Detect the faces  from the gray scale image and store the locations as rectangle
             //The first dimensional is the channel

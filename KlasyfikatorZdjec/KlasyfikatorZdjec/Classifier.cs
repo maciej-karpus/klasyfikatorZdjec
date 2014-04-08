@@ -20,38 +20,35 @@ namespace KlasyfikatorZdjec
 
         public static void classifyByMetadata()
         {
-            foreach (MetadataEXIF photo in PHOTOS_METADATA)
+            foreach (UnclassifiedImage unCImg in UNCLASSIFIED_PHOTOS)
             {
-                UnclassifiedImage cImg = UNCLASSIFIED_PHOTOS.Find(s => s.path == photo.GetPath());
+
+                ClassifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == unCImg.path);
                 if (cImg != null) 
                 {
                     //Rozdzielczosc
-                    cImg.resolution = photo.GetHeight() + "*" + photo.GetWidth();
+                    cImg.resolution = unCImg.resolutionX < 1024 && unCImg.resolutionY < 768 ? "małe" : unCImg.resolutionX < 2000 && unCImg.resolutionY < 1000 ? "średnie" : "duże";
 
                     //Rozmiar w MB
-                    double s = (double) photo.GetImageSize() / (1024*1024);
+                    double s = (double) unCImg.size / (1024*1024);
                     cImg.size = s <= 0.5 ? "< 0.5" : s <= 1 ? "0.5 - 1" : s <= 2 ? "1 - 2" : s <= 5 ? "2 - 5" : "> 5";
 
                     //Marka i model
-                    cImg.cameraModel = photo.GetModel();
+                    cImg.cameraModel = unCImg.cameraModel;
 
                     //Data wykonania
-                    cImg.dateTaken = photo.GetDateTimeTaken();
+                    cImg.dateTaken = unCImg.dateTaken;
 
                     //Format
-                    ImageFormat imgForm = photo.GetImageFormat();
-                    cImg.format = ImageFormat.Bmp.Equals(imgForm) ? "BMP" :
-                        ImageFormat.Gif.Equals(imgForm)  ? "GIF" :
-                        ImageFormat.Jpeg.Equals(imgForm) ? "JPEG" :
-                        ImageFormat.Png.Equals(imgForm)  ? "PNG" :
-                        imgForm.ToString();
+                    cImg.format = unCImg.format;
+                    
 
                     //ISO
-                    cImg.iso = photo.GetISOSpeed() <= 200 ? "100 - 200" : photo.GetISOSpeed() <= 800 ? "200 - 800" : "> 800";
+                    cImg.iso = unCImg.iso <= 200 ? "100 - 200" : unCImg.iso <= 800 ? "200 - 800" : "> 800";
 
                     //Czy w Polsce
-                    double latD = photo.GetLatitudeDegrees(), latM = photo.GetLatitudeMinutes(), lonD = photo.GetLongitudeDegrees(), lonM = photo.GetLongitudeMinutes();
-                    if (photo.GetLatitudeRef() == "N" && photo.GetLongitudeRef() == "E" &&
+                    double latD = unCImg.latitudeDegrees, latM = unCImg.latitudeMinutes, lonD = unCImg.longitudeDegrees, lonM = unCImg.longitudeMinutes;
+                    if (unCImg.latitudeRef == "N" && unCImg.longitudeRef == "E" &&
                         (latD >= 49 ) &&
                         (lonD > 14 || (lonD == 14 && lonM >= 7)) &&
                         (latD < 54 || (latD == 54 && latM <= 50)) &&
@@ -62,8 +59,7 @@ namespace KlasyfikatorZdjec
                         cImg.isInPoland = false;
 
                     //Wysokosc n.p.m.
-                    cImg.isBelowSeaLevel = photo.IsBelowSeaLevel();
-
+                    cImg.isBelowSeaLevel = unCImg.altitude > 0 ? false : true;
                 }
             }
 
@@ -73,11 +69,11 @@ namespace KlasyfikatorZdjec
         public static void classifyByFaces()
         {
             bool isPortrait = false;
-            foreach (UnclassifiedImage cImg in UNCLASSIFIED_PHOTOS)
+            foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
             {
-                cImg.faces = DetectFace.Run(cImg.path, ref isPortrait);
+                int faces = DetectFace.Run(cImg.path, ref isPortrait);
                 cImg.isPortrait = isPortrait;
-                cImg.isGroupOfPeople = cImg.faces > 1 ? true : false;
+                cImg.isGroupOfPeople = faces > 1 ? true : false;
             }
         }
     }

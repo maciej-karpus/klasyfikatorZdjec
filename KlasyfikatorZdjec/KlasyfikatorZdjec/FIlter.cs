@@ -17,112 +17,132 @@ namespace KlasyfikatorZdjec
 
         public void filterByResolution(string resolution)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (!resolution.Equals(ci.resolution))
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByFormat(string format)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (!format.Equals(ci.format))
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByCameraModel(string cameraModel)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (!cameraModel.Equals(ci.cameraModel))
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIso(string iso)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (!iso.Equals(ci.iso))
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIsInPoland(bool isInPoland)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (ci.isInPoland != isInPoland)
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIsBelowSeaLevel(bool isBelowSeaLevel)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (ci.isBelowSeaLevel != isBelowSeaLevel)
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIsPeople(bool isPeople)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (ci.isPeople != isPeople)
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIsPortrait(bool isPortrait)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (ci.isPortrait != isPortrait)
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByIsGroupOfPeople(bool isGroupOfPeople)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (ci.isGroupOfPeople != isGroupOfPeople)
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
 
         public void filterByMainColor(string mainColor)
         {
+            List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
                 if (mainColor.Equals(ci.mainColor))
                 {
-                    images.Remove(ci);
+                    imagesCopy.Remove(ci);
                 }
             }
+            images = imagesCopy;
         }
     }
 }
