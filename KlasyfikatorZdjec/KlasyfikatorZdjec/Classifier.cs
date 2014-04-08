@@ -80,5 +80,28 @@ namespace KlasyfikatorZdjec
                 cImg.isGroupOfPeople = cImg.faces > 1 ? true : false;
             }
         }
+
+        public static void classifyByColors()
+        {
+            foreach (UnclassifiedImage cImg in UNCLASSIFIED_PHOTOS)
+            {
+                Histograms hist = new Histograms(cImg.path);
+                hist.setHistograms();
+                long tmpBlue = 0;
+                long tmpGreen = 0;
+                long tmpRed = 0;
+
+                for (int i = 175; i < hist.histogramBlue.Length; i++)
+                {
+                    tmpBlue += hist.histogramBlue[i];
+                    tmpGreen += hist.histogramGreen[i];
+                    tmpRed += hist.histogramRed[i];
+                }
+
+                cImg.blueVal = tmpBlue / hist.pixels;
+                cImg.redVal = tmpRed / hist.pixels;
+                cImg.greenVal = tmpGreen / hist.pixels;
+            }
+        }
     }
 }
