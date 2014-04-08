@@ -243,6 +243,7 @@ namespace KlasyfikatorZdjec
         private void startClassificationButton_Click(object sender, EventArgs e)
         {
             Classifier.classifyByFaces();
+            Classifier.classifyByColors();
             Classifier.classifyByMetadata();
         }
     }

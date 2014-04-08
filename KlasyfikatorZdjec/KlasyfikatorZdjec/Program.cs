@@ -23,7 +23,7 @@ namespace KlasyfikatorZdjec
 
         static void TestXMLParser()
         {
-            var mList = new List<ClassifiedImage>();
+            var mList = new List<UnclassifiedImage>();
             //mList.Add(new ClassifiedImage(false, @"C:/test", 3, 0.94f));
             //mList.Add(new ClassifiedImage(true, @"C:/test2", 2, 0.1f));
             //mList.Add(new ClassifiedImage(true, @"C:/test3", 42, 0.22f));

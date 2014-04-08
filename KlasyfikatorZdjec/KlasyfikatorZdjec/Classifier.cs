@@ -79,24 +79,37 @@ namespace KlasyfikatorZdjec
 
         public static void classifyByColors()
         {
-            foreach (UnclassifiedImage cImg in UNCLASSIFIED_PHOTOS)
+            foreach (UnclassifiedImage unCImg in UNCLASSIFIED_PHOTOS)
             {
-                Histograms hist = new Histograms(cImg.path);
-                hist.setHistograms();
-                long tmpBlue = 0;
-                long tmpGreen = 0;
-                long tmpRed = 0;
-
-                for (int i = 175; i < hist.histogramBlue.Length; i++)
+                ClassifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == unCImg.path);
+                if (cImg != null)
                 {
-                    tmpBlue += hist.histogramBlue[i];
-                    tmpGreen += hist.histogramGreen[i];
-                    tmpRed += hist.histogramRed[i];
-                }
+                    Histograms hist = new Histograms(unCImg.path);
+                    hist.setHistograms();
+                    long tmpBlue = 0;
+                    long tmpGreen = 0;
+                    long tmpRed = 0;
 
-                cImg.blueVal = tmpBlue / hist.pixels;
-                cImg.redVal = tmpRed / hist.pixels;
-                cImg.greenVal = tmpGreen / hist.pixels;
+                    for (int i = 175; i < hist.histogramBlue.Length; i++)
+                    {
+                        tmpBlue += hist.histogramBlue[i];
+                        tmpGreen += hist.histogramGreen[i];
+                        tmpRed += hist.histogramRed[i];
+                    }
+
+                    unCImg.blueVal = tmpBlue / hist.pixels;
+                    unCImg.redVal = tmpRed / hist.pixels;
+                    unCImg.greenVal = tmpGreen / hist.pixels;
+
+                    if (unCImg.blueVal > unCImg.redVal && unCImg.blueVal > unCImg.greenVal)
+                        cImg.mainColor = "Blue";
+                    else if (unCImg.redVal > unCImg.blueVal && unCImg.redVal > unCImg.greenVal)
+                        cImg.mainColor = "Red";
+                    else if (unCImg.greenVal > unCImg.redVal && unCImg.greenVal > unCImg.blueVal)
+                        cImg.mainColor = "Green";
+                    else
+                        cImg.mainColor = "N/D";
+                }
             }
         }
     }
