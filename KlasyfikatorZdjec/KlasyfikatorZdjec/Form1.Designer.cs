@@ -62,6 +62,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.blackWhiteCheckBox = new System.Windows.Forms.CheckBox();
+            this.photosFromAbroadCheckBox = new System.Windows.Forms.CheckBox();
+            this.overSeaLevelCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // imageList
@@ -141,6 +143,7 @@
             this.startClassificationButton.TabIndex = 13;
             this.startClassificationButton.Text = "Rozpocznij klasyfikację";
             this.startClassificationButton.UseVisualStyleBackColor = true;
+            this.startClassificationButton.Click += new System.EventHandler(this.startClassificationButton_Click);
             // 
             // resolutionCheckBox
             // 
@@ -195,7 +198,7 @@
             // belowSeaLevelCheckBox
             // 
             this.belowSeaLevelCheckBox.AutoSize = true;
-            this.belowSeaLevelCheckBox.Location = new System.Drawing.Point(140, 252);
+            this.belowSeaLevelCheckBox.Location = new System.Drawing.Point(34, 275);
             this.belowSeaLevelCheckBox.Name = "belowSeaLevelCheckBox";
             this.belowSeaLevelCheckBox.Size = new System.Drawing.Size(128, 17);
             this.belowSeaLevelCheckBox.TabIndex = 19;
@@ -205,7 +208,7 @@
             // peopleCheckBox
             // 
             this.peopleCheckBox.AutoSize = true;
-            this.peopleCheckBox.Location = new System.Drawing.Point(15, 282);
+            this.peopleCheckBox.Location = new System.Drawing.Point(15, 301);
             this.peopleCheckBox.Name = "peopleCheckBox";
             this.peopleCheckBox.Size = new System.Drawing.Size(57, 17);
             this.peopleCheckBox.TabIndex = 20;
@@ -225,7 +228,7 @@
             // portraitCheckBox
             // 
             this.portraitCheckBox.AutoSize = true;
-            this.portraitCheckBox.Location = new System.Drawing.Point(34, 305);
+            this.portraitCheckBox.Location = new System.Drawing.Point(34, 324);
             this.portraitCheckBox.Name = "portraitCheckBox";
             this.portraitCheckBox.Size = new System.Drawing.Size(57, 17);
             this.portraitCheckBox.TabIndex = 22;
@@ -235,7 +238,7 @@
             // mainColourCheckBox
             // 
             this.mainColourCheckBox.AutoSize = true;
-            this.mainColourCheckBox.Location = new System.Drawing.Point(15, 334);
+            this.mainColourCheckBox.Location = new System.Drawing.Point(15, 353);
             this.mainColourCheckBox.Name = "mainColourCheckBox";
             this.mainColourCheckBox.Size = new System.Drawing.Size(94, 17);
             this.mainColourCheckBox.TabIndex = 23;
@@ -245,7 +248,7 @@
             // groupCheckBox
             // 
             this.groupCheckBox.AutoSize = true;
-            this.groupCheckBox.Location = new System.Drawing.Point(140, 305);
+            this.groupCheckBox.Location = new System.Drawing.Point(140, 324);
             this.groupCheckBox.Name = "groupCheckBox";
             this.groupCheckBox.Size = new System.Drawing.Size(79, 17);
             this.groupCheckBox.TabIndex = 24;
@@ -273,7 +276,7 @@
             // 
             // mainColourEditButton
             // 
-            this.mainColourEditButton.Location = new System.Drawing.Point(279, 330);
+            this.mainColourEditButton.Location = new System.Drawing.Point(279, 349);
             this.mainColourEditButton.Name = "mainColourEditButton";
             this.mainColourEditButton.Size = new System.Drawing.Size(51, 23);
             this.mainColourEditButton.TabIndex = 29;
@@ -291,7 +294,7 @@
             // 
             // peopleEditButton
             // 
-            this.peopleEditButton.Location = new System.Drawing.Point(279, 278);
+            this.peopleEditButton.Location = new System.Drawing.Point(279, 297);
             this.peopleEditButton.Name = "peopleEditButton";
             this.peopleEditButton.Size = new System.Drawing.Size(51, 23);
             this.peopleEditButton.TabIndex = 30;
@@ -342,7 +345,7 @@
             "Żółty",
             "Czarny",
             "Biały"});
-            this.mainColourComboBox.Location = new System.Drawing.Point(140, 353);
+            this.mainColourComboBox.Location = new System.Drawing.Point(140, 372);
             this.mainColourComboBox.Name = "mainColourComboBox";
             this.mainColourComboBox.Size = new System.Drawing.Size(121, 21);
             this.mainColourComboBox.TabIndex = 34;
@@ -373,18 +376,40 @@
             // blackWhiteCheckBox
             // 
             this.blackWhiteCheckBox.AutoSize = true;
-            this.blackWhiteCheckBox.Location = new System.Drawing.Point(34, 357);
+            this.blackWhiteCheckBox.Location = new System.Drawing.Point(34, 376);
             this.blackWhiteCheckBox.Name = "blackWhiteCheckBox";
             this.blackWhiteCheckBox.Size = new System.Drawing.Size(86, 17);
             this.blackWhiteCheckBox.TabIndex = 38;
             this.blackWhiteCheckBox.Text = "Czarno-białe";
             this.blackWhiteCheckBox.UseVisualStyleBackColor = true;
             // 
+            // photosFromAbroadCheckBox
+            // 
+            this.photosFromAbroadCheckBox.AutoSize = true;
+            this.photosFromAbroadCheckBox.Location = new System.Drawing.Point(161, 252);
+            this.photosFromAbroadCheckBox.Name = "photosFromAbroadCheckBox";
+            this.photosFromAbroadCheckBox.Size = new System.Drawing.Size(121, 17);
+            this.photosFromAbroadCheckBox.TabIndex = 39;
+            this.photosFromAbroadCheckBox.Text = "Zdjęcia zagraniczne";
+            this.photosFromAbroadCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // overSeaLevelCheckBox
+            // 
+            this.overSeaLevelCheckBox.AutoSize = true;
+            this.overSeaLevelCheckBox.Location = new System.Drawing.Point(161, 275);
+            this.overSeaLevelCheckBox.Name = "overSeaLevelCheckBox";
+            this.overSeaLevelCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.overSeaLevelCheckBox.TabIndex = 40;
+            this.overSeaLevelCheckBox.Text = "Nad Poziomem Morza";
+            this.overSeaLevelCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 462);
+            this.Controls.Add(this.overSeaLevelCheckBox);
+            this.Controls.Add(this.photosFromAbroadCheckBox);
             this.Controls.Add(this.blackWhiteCheckBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
@@ -459,6 +484,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox blackWhiteCheckBox;
+        private System.Windows.Forms.CheckBox photosFromAbroadCheckBox;
+        private System.Windows.Forms.CheckBox overSeaLevelCheckBox;
     }
 }
 

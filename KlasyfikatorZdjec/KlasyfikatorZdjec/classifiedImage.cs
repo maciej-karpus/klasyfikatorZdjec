@@ -8,74 +8,22 @@ using System.Xml.Serialization;
 
 namespace KlasyfikatorZdjec
 {
+    // przechowuje atrybuty, na podstawie ktorych przeprowadzimy filtrowanie
      public class ClassifiedImage
      {
-          [XmlAttribute("natura")]
-          public Boolean isNature;
-          [XmlAttribute("ścieżka")]
-          public String path;
-          [XmlAttribute("twarze")]
-          public int faces;
-          [XmlAttribute("niebieski")]
-          public float blueVal;
-
-          [XmlAttribute("rozdzielczosc")]
-          public string resolution;
-          [XmlAttribute("rozmiar")]
-          public string size;
-          [XmlAttribute("format")]
-          public string format;
-          [XmlAttribute("urzadzenie")]
-          public string cameraModel;
-          [XmlAttribute("dataWykonania")]
-          public string dateTaken;
-          [XmlAttribute("ISO")]
-          public string iso;
-          [XmlAttribute("wspolrzGeo")]
-          public bool isInPoland;
-          [XmlAttribute("poziomMorza")]
-          public bool isBelowSeaLevel;
-
-          [XmlAttribute("portret")]
-          public bool isPortrait;
-          [XmlAttribute("grupa")]
-          public bool isGroup;
-
-          //Konstruktor bez argumentów wymagany do serializacji
-          public ClassifiedImage()
-          {
-               new ClassifiedImage(false, "", 0, 0f);
-          }
-
-          public ClassifiedImage(Boolean isNature, String path, int faces, float blueVal)
-          {
-               this.isNature = isNature;
-               this.path = path;
-               this.faces = faces;
-               this.blueVal = blueVal;
-          }
-
-          public object getProp(int i)
-          {
-              switch (i)
-              {
-                  case 0:
-                      return resolution;
-                  case 1:
-                      return format;
-                  case 2:
-                      return cameraModel;
-                  case 3:
-                      return iso;
-                  case 4:
-                      return isInPoland;
-                  case 5:
-                      return isBelowSeaLevel;
-                  case 6:
-                      return blueVal; // do ustalenia
-                  default:
-                      return null;
-              }
-          }
+         public string path { get; set; }
+         public string mainColor { get; set; }
+         public bool isNature { get; set; }
+         public string resolution { get; set; }
+         public string size { get; set; }
+         public string format { get; set; }
+         public string cameraModel { get; set; }
+         public string dateTaken { get; set; }
+         public string iso { get; set; }
+         public bool isInPoland { get; set; }
+         public bool isBelowSeaLevel { get; set; }
+         public bool isPeople { get; set; }
+         public bool isPortrait { get; set; }
+         public bool isGroupOfPeople { get; set; }
      }
 }

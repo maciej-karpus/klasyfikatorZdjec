@@ -31,6 +31,10 @@ namespace KlasyfikatorZdjec
 
         private void loadImages(string[] files)
         {
+            // TODO: uzupelnienie listy UNCLASSIFIED_PHOTOS
+            // sprawdz czy jest plik xml w folderze (porownaj jego date modyfikacji z modyfikacja folderu (najnowszym zdjeciem))
+            // jesli jest to wczytaj liste z niego, jesli nie - stworz nowego xmla i uzupelnij jednoczesnie liste UNCLASSIFIED_PHOTOS
+
             imageList.ImageSize = new Size(100, 100);
             imageList.ColorDepth = ColorDepth.Depth32Bit;
 
@@ -142,53 +146,72 @@ namespace KlasyfikatorZdjec
 
         private void filterButton_Click(object sender, EventArgs e)
         {
-            bool[] filters = new bool[7];
-            object[] values = new object[7];
-
-            for(int i=0; i<7; i++)
-            {
-                filters[i] = false;
-                values[i] = null;
-            }
-
+            Filter filter = new Filter(Classifier.PHOTOS_CLASSIFIED);
+            
             if (resolutionCheckBox.Checked)
             {
-                filters[0] = true;
-                values[0] = resolutionComboBox.SelectedText;
+                filter.filterByResolution(resolutionComboBox.SelectedText);
             }
             if (formatCheckBox.Checked)
             {
-                filters[1] = true;
-                values[1] = formatComboBox.SelectedText;
+                filter.filterByFormat(formatComboBox.SelectedText);
             }
             if (cameraCheckBox.Checked)
             {
-                filters[2] = true;
-                values[2] = cameraComboBox.SelectedText;
+                filter.filterByCameraModel(cameraComboBox.SelectedText);
             }
+            // TODO
             if (isoCheckBox.Checked)
             {
-                filters[3] = true;
-                values[3] = null;
+                filter.filterByIso(null);
             }
             if (photosFromPolandCheckBox.Checked)
             {
-                filters[4] = true;
-                values[4] = true;
+                filter.filterByIsInPoland(true);
+            }
+            if (photosFromAbroadCheckBox.Checked)
+            {
+                filter.filterByIsInPoland(false);
             }
             if (belowSeaLevelCheckBox.Checked)
             {
-                filters[5] = true;
-                values[5] = true;
+                filter.filterByIsBelowSeaLevel(true);
+            }
+            if (overSeaLevelCheckBox.Checked)
+            {
+                filter.filterByIsBelowSeaLevel(false);
+            }
+            if (peopleCheckBox.Checked)
+            {
+                filter.filterByIsPeople(true);
+            }
+            if (portraitCheckBox.Checked)
+            {
+                filter.filterByIsPortrait(true);
+            }
+            if (groupCheckBox.Checked)
+            {
+                filter.filterByIsGroupOfPeople(true);
             }
             if (mainColourCheckBox.Checked)
             {
-                filters[6] = true;
-                values[6] = mainColourComboBox.SelectedText;
+                filter.filterByMainColor(mainColourComboBox.SelectedText);
             }
 
-            string[] files = Filter.filter(filters, values, Classifier.PHOTOS_CLASSIFIED);
+            string[] files = new string[filter.images.Count];
+            int j = 0;
+            foreach (ClassifiedImage ci in filter.images)
+            {
+                files[j] = ci.path;
+            }
+
             loadImages(files);
+        }
+
+        private void startClassificationButton_Click(object sender, EventArgs e)
+        {
+            Classifier.PHOTOS_CLASSIFIED = new List<ClassifiedImage>();
+            Classifier.classifyByFaces();
         }
     }
 }

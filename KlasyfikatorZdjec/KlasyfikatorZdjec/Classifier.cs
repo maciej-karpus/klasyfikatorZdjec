@@ -11,12 +11,18 @@ namespace KlasyfikatorZdjec
     {
         public static List<MetadataEXIF> PHOTOS_METADATA = new List<MetadataEXIF>();
         public static List<ClassifiedImage> PHOTOS_CLASSIFIED = new List<ClassifiedImage>();
+        public static List<UnclassifiedImage> UNCLASSIFIED_PHOTOS = new List<UnclassifiedImage>();
+        
+        // TODO: majac liste UNCLASSIFIED_PHOTOS (nie musi byc statyczna, moze byc podawana jako parametr
+        // albo ew. umiescimy ja jako statyczna np. w Program.cs) uzupelniamy liste PHOTOS_CLASSIFIED
+        // a wiec proces usupelniania listy UNCLASSIFIED_PHOTOS musimy wyrzucic gdzie indziej, np. do metody loadImages()
+        // tutaj niech bedzie tylko sama klasyfikacja
 
         public static void classifyByMetadata()
         {
             foreach (MetadataEXIF photo in PHOTOS_METADATA)
             {
-                ClassifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == photo.GetPath());
+                UnclassifiedImage cImg = UNCLASSIFIED_PHOTOS.Find(s => s.path == photo.GetPath());
                 if (cImg != null) 
                 {
                     //Rozdzielczosc
@@ -63,14 +69,15 @@ namespace KlasyfikatorZdjec
 
         }
 
+        // TODO
         public static void classifyByFaces()
         {
             bool isPortrait = false;
-            foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
+            foreach (UnclassifiedImage cImg in UNCLASSIFIED_PHOTOS)
             {
                 cImg.faces = DetectFace.Run(cImg.path, ref isPortrait);
                 cImg.isPortrait = isPortrait;
-                cImg.isGroup = cImg.faces > 1 ? true : false;
+                cImg.isGroupOfPeople = cImg.faces > 1 ? true : false;
             }
         }
     }
