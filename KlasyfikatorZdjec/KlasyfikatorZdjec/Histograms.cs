@@ -9,17 +9,19 @@ namespace KlasyfikatorZdjec
 {
     class Histograms
     {
-        long[] histogramRed { get; set; }
-        long[] histogramBlue { get; set; }
-        long[] histogramGreen { get; set; }
-        long[] histogram { get; set; }
-        long[] cumulativeHistogram { get; set; }
+        public long[] histogramRed { get; set; }
+        public long[] histogramBlue { get; set; }
+        public long[] histogramGreen { get; set; }
+        public long[] histogram { get; set; }
+        public long[] cumulativeHistogram { get; set; }
+        public int pixels;
         string path { get; set; }
 
         public Histograms(string path)
         {
             this.path = path;
             this.cumulativeHistogram = new long[256];
+            this.pixels = 0;
         }
 
         public void setHistograms()
@@ -48,6 +50,7 @@ namespace KlasyfikatorZdjec
                     this.histogramBlue[c.B]++;
                     this.histogramGreen[c.G]++;
                     this.histogramRed[c.R]++;
+                    pixels++;
                 }
             }
         }
