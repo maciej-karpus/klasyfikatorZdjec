@@ -246,7 +246,7 @@ namespace KlasyfikatorZdjec
             }
             if (mainColourCheckBox.Checked)
             {
-                filter.filterByMainColor(mainColourComboBox.SelectedText);
+                filter.filterByMainColor(this.textBox1.Text);
             }
 
             string[] files = new string[filter.images.Count];

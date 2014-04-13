@@ -97,9 +97,9 @@ namespace KlasyfikatorZdjec
                         tmpRed += hist.histogramRed[i];
                     }
 
-                    unCImg.blueVal = tmpBlue / hist.pixels;
-                    unCImg.redVal = tmpRed / hist.pixels;
-                    unCImg.greenVal = tmpGreen / hist.pixels;
+                    unCImg.blueVal = (double)tmpBlue / (double)hist.pixels;
+                    unCImg.redVal = (double)tmpRed / (double)hist.pixels;
+                    unCImg.greenVal = (double)tmpGreen / (double)hist.pixels;
 
                     if (unCImg.blueVal > unCImg.redVal && unCImg.blueVal > unCImg.greenVal)
                         cImg.mainColor = "Blue";

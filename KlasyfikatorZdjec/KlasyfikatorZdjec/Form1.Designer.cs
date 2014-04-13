@@ -57,11 +57,11 @@
             this.resolutionComboBox = new System.Windows.Forms.ComboBox();
             this.formatComboBox = new System.Windows.Forms.ComboBox();
             this.cameraComboBox = new System.Windows.Forms.ComboBox();
-            this.mainColourComboBox = new System.Windows.Forms.ComboBox();
             this.blackWhiteCheckBox = new System.Windows.Forms.CheckBox();
             this.photosFromAbroadCheckBox = new System.Windows.Forms.CheckBox();
             this.overSeaLevelCheckBox = new System.Windows.Forms.CheckBox();
             this.isoComboBox = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // imageList
@@ -333,21 +333,6 @@
             this.cameraComboBox.Size = new System.Drawing.Size(121, 21);
             this.cameraComboBox.TabIndex = 33;
             // 
-            // mainColourComboBox
-            // 
-            this.mainColourComboBox.FormattingEnabled = true;
-            this.mainColourComboBox.Items.AddRange(new object[] {
-            "Czerwony",
-            "Zielony",
-            "Niebieski",
-            "Żółty",
-            "Czarny",
-            "Biały"});
-            this.mainColourComboBox.Location = new System.Drawing.Point(140, 372);
-            this.mainColourComboBox.Name = "mainColourComboBox";
-            this.mainColourComboBox.Size = new System.Drawing.Size(121, 21);
-            this.mainColourComboBox.TabIndex = 34;
-            // 
             // blackWhiteCheckBox
             // 
             this.blackWhiteCheckBox.AutoSize = true;
@@ -390,16 +375,23 @@
             this.isoComboBox.Size = new System.Drawing.Size(121, 21);
             this.isoComboBox.TabIndex = 41;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(140, 349);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 42;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 462);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.isoComboBox);
             this.Controls.Add(this.overSeaLevelCheckBox);
             this.Controls.Add(this.photosFromAbroadCheckBox);
             this.Controls.Add(this.blackWhiteCheckBox);
-            this.Controls.Add(this.mainColourComboBox);
             this.Controls.Add(this.cameraComboBox);
             this.Controls.Add(this.formatComboBox);
             this.Controls.Add(this.resolutionComboBox);
@@ -464,11 +456,11 @@
         private System.Windows.Forms.ComboBox resolutionComboBox;
         private System.Windows.Forms.ComboBox formatComboBox;
         private System.Windows.Forms.ComboBox cameraComboBox;
-        private System.Windows.Forms.ComboBox mainColourComboBox;
         private System.Windows.Forms.CheckBox blackWhiteCheckBox;
         private System.Windows.Forms.CheckBox photosFromAbroadCheckBox;
         private System.Windows.Forms.CheckBox overSeaLevelCheckBox;
         private System.Windows.Forms.ComboBox isoComboBox;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
