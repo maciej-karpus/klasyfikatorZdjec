@@ -137,7 +137,7 @@ namespace KlasyfikatorZdjec
             List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
-                if (mainColor.Equals(ci.mainColor))
+                if (!mainColor.Equals(ci.mainColor))
                 {
                     imagesCopy.Remove(ci);
                 }
