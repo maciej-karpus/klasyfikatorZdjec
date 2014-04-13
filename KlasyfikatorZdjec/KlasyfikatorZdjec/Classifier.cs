@@ -59,7 +59,7 @@ namespace KlasyfikatorZdjec
                         cImg.isInPoland = false;
 
                     //Wysokosc n.p.m.
-                    cImg.isBelowSeaLevel = unCImg.altitude > 0 ? false : true;
+                    cImg.isAboveSeaLevel = unCImg.altitude > 0 ? "wyżyny" : "niziny";
                 }
             }
 

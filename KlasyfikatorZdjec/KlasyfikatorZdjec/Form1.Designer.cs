@@ -58,12 +58,10 @@
             this.formatComboBox = new System.Windows.Forms.ComboBox();
             this.cameraComboBox = new System.Windows.Forms.ComboBox();
             this.mainColourComboBox = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.blackWhiteCheckBox = new System.Windows.Forms.CheckBox();
             this.photosFromAbroadCheckBox = new System.Windows.Forms.CheckBox();
             this.overSeaLevelCheckBox = new System.Windows.Forms.CheckBox();
+            this.isoComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // imageList
@@ -200,9 +198,9 @@
             this.belowSeaLevelCheckBox.AutoSize = true;
             this.belowSeaLevelCheckBox.Location = new System.Drawing.Point(34, 275);
             this.belowSeaLevelCheckBox.Name = "belowSeaLevelCheckBox";
-            this.belowSeaLevelCheckBox.Size = new System.Drawing.Size(128, 17);
+            this.belowSeaLevelCheckBox.Size = new System.Drawing.Size(54, 17);
             this.belowSeaLevelCheckBox.TabIndex = 19;
-            this.belowSeaLevelCheckBox.Text = "Pod Poziomem Morza";
+            this.belowSeaLevelCheckBox.Text = "Niziny";
             this.belowSeaLevelCheckBox.UseVisualStyleBackColor = true;
             // 
             // peopleCheckBox
@@ -350,29 +348,6 @@
             this.mainColourComboBox.Size = new System.Drawing.Size(121, 21);
             this.mainColourComboBox.TabIndex = 34;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(140, 196);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(50, 20);
-            this.textBox1.TabIndex = 35;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(211, 196);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(50, 20);
-            this.textBox2.TabIndex = 36;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(192, 199);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = " - ";
-            // 
             // blackWhiteCheckBox
             // 
             this.blackWhiteCheckBox.AutoSize = true;
@@ -398,22 +373,32 @@
             this.overSeaLevelCheckBox.AutoSize = true;
             this.overSeaLevelCheckBox.Location = new System.Drawing.Point(161, 275);
             this.overSeaLevelCheckBox.Name = "overSeaLevelCheckBox";
-            this.overSeaLevelCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.overSeaLevelCheckBox.Size = new System.Drawing.Size(63, 17);
             this.overSeaLevelCheckBox.TabIndex = 40;
-            this.overSeaLevelCheckBox.Text = "Nad Poziomem Morza";
+            this.overSeaLevelCheckBox.Text = "Wyżyny";
             this.overSeaLevelCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // isoComboBox
+            // 
+            this.isoComboBox.FormattingEnabled = true;
+            this.isoComboBox.Items.AddRange(new object[] {
+            "100 - 200",
+            "200 - 800",
+            "> 800"});
+            this.isoComboBox.Location = new System.Drawing.Point(140, 200);
+            this.isoComboBox.Name = "isoComboBox";
+            this.isoComboBox.Size = new System.Drawing.Size(121, 21);
+            this.isoComboBox.TabIndex = 41;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 462);
+            this.Controls.Add(this.isoComboBox);
             this.Controls.Add(this.overSeaLevelCheckBox);
             this.Controls.Add(this.photosFromAbroadCheckBox);
             this.Controls.Add(this.blackWhiteCheckBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.mainColourComboBox);
             this.Controls.Add(this.cameraComboBox);
             this.Controls.Add(this.formatComboBox);
@@ -480,12 +465,10 @@
         private System.Windows.Forms.ComboBox formatComboBox;
         private System.Windows.Forms.ComboBox cameraComboBox;
         private System.Windows.Forms.ComboBox mainColourComboBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox blackWhiteCheckBox;
         private System.Windows.Forms.CheckBox photosFromAbroadCheckBox;
         private System.Windows.Forms.CheckBox overSeaLevelCheckBox;
+        private System.Windows.Forms.ComboBox isoComboBox;
     }
 }
 

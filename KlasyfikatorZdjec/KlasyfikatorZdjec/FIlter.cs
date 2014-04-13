@@ -85,7 +85,7 @@ namespace KlasyfikatorZdjec
             List<ClassifiedImage> imagesCopy = new List<ClassifiedImage>(images);
             foreach (ClassifiedImage ci in images)
             {
-                if (ci.isBelowSeaLevel != isBelowSeaLevel)
+                if ((isBelowSeaLevel && ci.isAboveSeaLevel != "niziny") || (!isBelowSeaLevel && ci.isAboveSeaLevel != "wyżyny"))
                 {
                     imagesCopy.Remove(ci);
                 }

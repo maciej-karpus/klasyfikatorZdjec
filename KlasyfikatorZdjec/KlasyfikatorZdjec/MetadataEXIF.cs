@@ -29,22 +29,22 @@ namespace KlasyfikatorZdjec
     {
         string path;
         PropertyItem[] propItems;
-        string Manufacturer = null;
-        string Model = null;
+        string Manufacturer = "";
+        string Model = "";
         int Width = 0;
         int Height = 0;
         short ISOSpeed = 0;
-        string DateTimeTaken = null;
+        string DateTimeTaken = "";
         int ImageSize = 0;
-        string ImgFormat = null;
+        string ImgFormat = "";
         double LatitudeDegrees = 0.0; //Szerokosc geo
         double LatitudeMinutes = 0.0;
         double LatitudeSeconds = 0.0;
-        string LatitudeRef = null; //W czy E
+        string LatitudeRef = "0"; //W czy E
         double LongitudeDegrees = 0.0; //Dlugosc geo
         double LongitudeMinutes = 0.0;
         double LongitudeSeconds = 0.0;
-        string LongitudeRef = null; //N czy S
+        string LongitudeRef = "0"; //N czy S
         double Altitude = 0.0; //Wysokosc geo
         bool BelowSeaLevel = false; //0 Above Sea Level, 1 Below
 

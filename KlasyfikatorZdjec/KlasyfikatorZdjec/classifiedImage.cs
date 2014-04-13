@@ -21,7 +21,7 @@ namespace KlasyfikatorZdjec
          public string dateTaken { get; set; }
          public string iso { get; set; }
          public bool isInPoland { get; set; }
-         public bool isBelowSeaLevel { get; set; }
+         public string isAboveSeaLevel { get; set; }
          public bool isPeople { get; set; }
          public bool isPortrait { get; set; }
          public bool isGroupOfPeople { get; set; }
