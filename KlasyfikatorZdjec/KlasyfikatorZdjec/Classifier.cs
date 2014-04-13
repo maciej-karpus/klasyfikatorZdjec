@@ -72,7 +72,7 @@ namespace KlasyfikatorZdjec
             foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
             {
                 int faces = DetectFace.Run(cImg.path, ref isPortrait);
-                cImg.isPortrait = isPortrait;
+                cImg.isPortrait = faces == 1 ? true : false;
                 cImg.isGroupOfPeople = faces > 1 ? true : false;
             }
         }
@@ -97,9 +97,9 @@ namespace KlasyfikatorZdjec
                         tmpRed += hist.histogramRed[i];
                     }
 
-                    unCImg.blueVal = tmpBlue / hist.pixels;
-                    unCImg.redVal = tmpRed / hist.pixels;
-                    unCImg.greenVal = tmpGreen / hist.pixels;
+                    unCImg.blueVal = (double)tmpBlue / (double)hist.pixels;
+                    unCImg.redVal = (double)tmpRed / (double)hist.pixels;
+                    unCImg.greenVal = (double)tmpGreen / (double)hist.pixels;
 
                     if (unCImg.blueVal > unCImg.redVal && unCImg.blueVal > unCImg.greenVal)
                         cImg.mainColor = "Blue";
