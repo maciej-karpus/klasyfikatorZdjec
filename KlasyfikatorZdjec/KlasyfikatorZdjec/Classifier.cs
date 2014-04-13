@@ -72,7 +72,7 @@ namespace KlasyfikatorZdjec
             foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
             {
                 int faces = DetectFace.Run(cImg.path, ref isPortrait);
-                cImg.isPortrait = isPortrait;
+                cImg.isPortrait = faces == 1 ? true : false;
                 cImg.isGroupOfPeople = faces > 1 ? true : false;
             }
         }
