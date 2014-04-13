@@ -101,7 +101,7 @@ namespace KlasyfikatorZdjec
                 cameraComboBox.Items.Add(camera);
 
             //if(!serializeExists)
-            //  XMLParser.serialize(Classifier.UNCLASSIFIED_PHOTOS, directoryOfOperations);
+             // XMLParser.serialize(Classifier.UNCLASSIFIED_PHOTOS, directoryOfOperations);
         
         }
 
@@ -268,6 +268,11 @@ namespace KlasyfikatorZdjec
             Classifier.classifyByFaces();
             Classifier.classifyByColors();
             Classifier.classifyByMetadata();
+        }
+
+        private void settingsEditor_Click(object sender, EventArgs e)
+        {
+             Form2 subForm = new Form2(this);
         }
     }
 }
