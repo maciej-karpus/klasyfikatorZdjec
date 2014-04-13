@@ -35,8 +35,6 @@
             this.chosenDirectoryBox = new System.Windows.Forms.TextBox();
             this.refreshImagesButton = new System.Windows.Forms.Button();
             this.chosenDirectoryLabel = new System.Windows.Forms.Label();
-            this.formatEditButton = new System.Windows.Forms.Button();
-            this.resolutionEditButton = new System.Windows.Forms.Button();
             this.startClassificationButton = new System.Windows.Forms.Button();
             this.resolutionCheckBox = new System.Windows.Forms.CheckBox();
             this.formatCheckBox = new System.Windows.Forms.CheckBox();
@@ -50,10 +48,6 @@
             this.mainColourCheckBox = new System.Windows.Forms.CheckBox();
             this.groupCheckBox = new System.Windows.Forms.CheckBox();
             this.filterButton = new System.Windows.Forms.Button();
-            this.cameraEditButton = new System.Windows.Forms.Button();
-            this.mainColourEditButton = new System.Windows.Forms.Button();
-            this.geoEditButton = new System.Windows.Forms.Button();
-            this.peopleEditButton = new System.Windows.Forms.Button();
             this.resolutionComboBox = new System.Windows.Forms.ComboBox();
             this.formatComboBox = new System.Windows.Forms.ComboBox();
             this.cameraComboBox = new System.Windows.Forms.ComboBox();
@@ -61,6 +55,7 @@
             this.photosFromAbroadCheckBox = new System.Windows.Forms.CheckBox();
             this.overSeaLevelCheckBox = new System.Windows.Forms.CheckBox();
             this.isoComboBox = new System.Windows.Forms.ComboBox();
+               this.settingsEditor = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -74,17 +69,17 @@
             // 
             this.listView.Location = new System.Drawing.Point(336, 13);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(389, 437);
+               this.listView.Size = new System.Drawing.Size(389, 460);
             this.listView.TabIndex = 3;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
             // directoryPicker
             // 
-            this.directoryPicker.Location = new System.Drawing.Point(12, 63);
+               this.directoryPicker.Location = new System.Drawing.Point(15, 63);
             this.directoryPicker.Name = "directoryPicker";
-            this.directoryPicker.Size = new System.Drawing.Size(81, 23);
+               this.directoryPicker.Size = new System.Drawing.Size(134, 23);
             this.directoryPicker.TabIndex = 4;
-            this.directoryPicker.Text = "Zmień lokacje";
+               this.directoryPicker.Text = "Zmień lokację";
             this.directoryPicker.UseVisualStyleBackColor = true;
             this.directoryPicker.Click += new System.EventHandler(this.directoryPicker_Click);
             // 
@@ -98,9 +93,9 @@
             // 
             // refreshImagesButton
             // 
-            this.refreshImagesButton.Location = new System.Drawing.Point(262, 63);
+               this.refreshImagesButton.Location = new System.Drawing.Point(190, 63);
             this.refreshImagesButton.Name = "refreshImagesButton";
-            this.refreshImagesButton.Size = new System.Drawing.Size(68, 23);
+               this.refreshImagesButton.Size = new System.Drawing.Size(140, 23);
             this.refreshImagesButton.TabIndex = 6;
             this.refreshImagesButton.Text = "Odśwież";
             this.refreshImagesButton.UseVisualStyleBackColor = true;
@@ -115,27 +110,9 @@
             this.chosenDirectoryLabel.TabIndex = 7;
             this.chosenDirectoryLabel.Text = "Wybrany folder zdjęć:";
             // 
-            // formatEditButton
-            // 
-            this.formatEditButton.Location = new System.Drawing.Point(279, 138);
-            this.formatEditButton.Name = "formatEditButton";
-            this.formatEditButton.Size = new System.Drawing.Size(51, 23);
-            this.formatEditButton.TabIndex = 9;
-            this.formatEditButton.Text = "Edycja";
-            this.formatEditButton.UseVisualStyleBackColor = true;
-            // 
-            // resolutionEditButton
-            // 
-            this.resolutionEditButton.Location = new System.Drawing.Point(279, 109);
-            this.resolutionEditButton.Name = "resolutionEditButton";
-            this.resolutionEditButton.Size = new System.Drawing.Size(51, 23);
-            this.resolutionEditButton.TabIndex = 12;
-            this.resolutionEditButton.Text = "Edycja";
-            this.resolutionEditButton.UseVisualStyleBackColor = true;
-            // 
             // startClassificationButton
             // 
-            this.startClassificationButton.Location = new System.Drawing.Point(107, 63);
+               this.startClassificationButton.Location = new System.Drawing.Point(190, 92);
             this.startClassificationButton.Name = "startClassificationButton";
             this.startClassificationButton.Size = new System.Drawing.Size(140, 23);
             this.startClassificationButton.TabIndex = 13;
@@ -146,7 +123,7 @@
             // resolutionCheckBox
             // 
             this.resolutionCheckBox.AutoSize = true;
-            this.resolutionCheckBox.Location = new System.Drawing.Point(15, 113);
+               this.resolutionCheckBox.Location = new System.Drawing.Point(30, 145);
             this.resolutionCheckBox.Name = "resolutionCheckBox";
             this.resolutionCheckBox.Size = new System.Drawing.Size(94, 17);
             this.resolutionCheckBox.TabIndex = 14;
@@ -156,7 +133,7 @@
             // formatCheckBox
             // 
             this.formatCheckBox.AutoSize = true;
-            this.formatCheckBox.Location = new System.Drawing.Point(15, 142);
+               this.formatCheckBox.Location = new System.Drawing.Point(30, 174);
             this.formatCheckBox.Name = "formatCheckBox";
             this.formatCheckBox.Size = new System.Drawing.Size(58, 17);
             this.formatCheckBox.TabIndex = 15;
@@ -166,7 +143,7 @@
             // cameraCheckBox
             // 
             this.cameraCheckBox.AutoSize = true;
-            this.cameraCheckBox.Location = new System.Drawing.Point(15, 171);
+               this.cameraCheckBox.Location = new System.Drawing.Point(30, 203);
             this.cameraCheckBox.Name = "cameraCheckBox";
             this.cameraCheckBox.Size = new System.Drawing.Size(57, 17);
             this.cameraCheckBox.TabIndex = 16;
@@ -176,7 +153,7 @@
             // isoCheckBox
             // 
             this.isoCheckBox.AutoSize = true;
-            this.isoCheckBox.Location = new System.Drawing.Point(15, 200);
+               this.isoCheckBox.Location = new System.Drawing.Point(30, 232);
             this.isoCheckBox.Name = "isoCheckBox";
             this.isoCheckBox.Size = new System.Drawing.Size(44, 17);
             this.isoCheckBox.TabIndex = 17;
@@ -186,7 +163,7 @@
             // photosFromPolandCheckBox
             // 
             this.photosFromPolandCheckBox.AutoSize = true;
-            this.photosFromPolandCheckBox.Location = new System.Drawing.Point(34, 252);
+               this.photosFromPolandCheckBox.Location = new System.Drawing.Point(49, 284);
             this.photosFromPolandCheckBox.Name = "photosFromPolandCheckBox";
             this.photosFromPolandCheckBox.Size = new System.Drawing.Size(100, 17);
             this.photosFromPolandCheckBox.TabIndex = 18;
@@ -196,7 +173,7 @@
             // belowSeaLevelCheckBox
             // 
             this.belowSeaLevelCheckBox.AutoSize = true;
-            this.belowSeaLevelCheckBox.Location = new System.Drawing.Point(34, 275);
+               this.belowSeaLevelCheckBox.Location = new System.Drawing.Point(49, 307);
             this.belowSeaLevelCheckBox.Name = "belowSeaLevelCheckBox";
             this.belowSeaLevelCheckBox.Size = new System.Drawing.Size(54, 17);
             this.belowSeaLevelCheckBox.TabIndex = 19;
@@ -206,7 +183,7 @@
             // peopleCheckBox
             // 
             this.peopleCheckBox.AutoSize = true;
-            this.peopleCheckBox.Location = new System.Drawing.Point(15, 301);
+               this.peopleCheckBox.Location = new System.Drawing.Point(30, 333);
             this.peopleCheckBox.Name = "peopleCheckBox";
             this.peopleCheckBox.Size = new System.Drawing.Size(57, 17);
             this.peopleCheckBox.TabIndex = 20;
@@ -216,7 +193,7 @@
             // geoCheckBox
             // 
             this.geoCheckBox.AutoSize = true;
-            this.geoCheckBox.Location = new System.Drawing.Point(15, 229);
+               this.geoCheckBox.Location = new System.Drawing.Point(30, 261);
             this.geoCheckBox.Name = "geoCheckBox";
             this.geoCheckBox.Size = new System.Drawing.Size(63, 17);
             this.geoCheckBox.TabIndex = 21;
@@ -226,7 +203,7 @@
             // portraitCheckBox
             // 
             this.portraitCheckBox.AutoSize = true;
-            this.portraitCheckBox.Location = new System.Drawing.Point(34, 324);
+               this.portraitCheckBox.Location = new System.Drawing.Point(49, 356);
             this.portraitCheckBox.Name = "portraitCheckBox";
             this.portraitCheckBox.Size = new System.Drawing.Size(57, 17);
             this.portraitCheckBox.TabIndex = 22;
@@ -236,7 +213,7 @@
             // mainColourCheckBox
             // 
             this.mainColourCheckBox.AutoSize = true;
-            this.mainColourCheckBox.Location = new System.Drawing.Point(15, 353);
+               this.mainColourCheckBox.Location = new System.Drawing.Point(30, 385);
             this.mainColourCheckBox.Name = "mainColourCheckBox";
             this.mainColourCheckBox.Size = new System.Drawing.Size(94, 17);
             this.mainColourCheckBox.TabIndex = 23;
@@ -246,7 +223,7 @@
             // groupCheckBox
             // 
             this.groupCheckBox.AutoSize = true;
-            this.groupCheckBox.Location = new System.Drawing.Point(140, 324);
+               this.groupCheckBox.Location = new System.Drawing.Point(155, 356);
             this.groupCheckBox.Name = "groupCheckBox";
             this.groupCheckBox.Size = new System.Drawing.Size(79, 17);
             this.groupCheckBox.TabIndex = 24;
@@ -255,49 +232,13 @@
             // 
             // filterButton
             // 
-            this.filterButton.Location = new System.Drawing.Point(126, 427);
+               this.filterButton.Location = new System.Drawing.Point(144, 442);
             this.filterButton.Name = "filterButton";
             this.filterButton.Size = new System.Drawing.Size(75, 23);
             this.filterButton.TabIndex = 25;
             this.filterButton.Text = "Filtruj";
             this.filterButton.UseVisualStyleBackColor = true;
             this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
-            // 
-            // cameraEditButton
-            // 
-            this.cameraEditButton.Location = new System.Drawing.Point(279, 167);
-            this.cameraEditButton.Name = "cameraEditButton";
-            this.cameraEditButton.Size = new System.Drawing.Size(51, 23);
-            this.cameraEditButton.TabIndex = 26;
-            this.cameraEditButton.Text = "Edycja";
-            this.cameraEditButton.UseVisualStyleBackColor = true;
-            // 
-            // mainColourEditButton
-            // 
-            this.mainColourEditButton.Location = new System.Drawing.Point(279, 349);
-            this.mainColourEditButton.Name = "mainColourEditButton";
-            this.mainColourEditButton.Size = new System.Drawing.Size(51, 23);
-            this.mainColourEditButton.TabIndex = 29;
-            this.mainColourEditButton.Text = "Edycja";
-            this.mainColourEditButton.UseVisualStyleBackColor = true;
-            // 
-            // geoEditButton
-            // 
-            this.geoEditButton.Location = new System.Drawing.Point(279, 225);
-            this.geoEditButton.Name = "geoEditButton";
-            this.geoEditButton.Size = new System.Drawing.Size(51, 23);
-            this.geoEditButton.TabIndex = 28;
-            this.geoEditButton.Text = "Edycja";
-            this.geoEditButton.UseVisualStyleBackColor = true;
-            // 
-            // peopleEditButton
-            // 
-            this.peopleEditButton.Location = new System.Drawing.Point(279, 297);
-            this.peopleEditButton.Name = "peopleEditButton";
-            this.peopleEditButton.Size = new System.Drawing.Size(51, 23);
-            this.peopleEditButton.TabIndex = 30;
-            this.peopleEditButton.Text = "Edycja";
-            this.peopleEditButton.UseVisualStyleBackColor = true;
             // 
             // resolutionComboBox
             // 
@@ -306,7 +247,7 @@
             "małe",
             "średnie",
             "duże"});
-            this.resolutionComboBox.Location = new System.Drawing.Point(140, 109);
+               this.resolutionComboBox.Location = new System.Drawing.Point(155, 141);
             this.resolutionComboBox.Name = "resolutionComboBox";
             this.resolutionComboBox.Size = new System.Drawing.Size(121, 21);
             this.resolutionComboBox.TabIndex = 31;
@@ -320,7 +261,7 @@
             "JPEG",
             "PNG",
             "Inne"});
-            this.formatComboBox.Location = new System.Drawing.Point(140, 138);
+               this.formatComboBox.Location = new System.Drawing.Point(155, 170);
             this.formatComboBox.Name = "formatComboBox";
             this.formatComboBox.Size = new System.Drawing.Size(121, 21);
             this.formatComboBox.TabIndex = 32;
@@ -328,7 +269,7 @@
             // cameraComboBox
             // 
             this.cameraComboBox.FormattingEnabled = true;
-            this.cameraComboBox.Location = new System.Drawing.Point(140, 167);
+               this.cameraComboBox.Location = new System.Drawing.Point(155, 199);
             this.cameraComboBox.Name = "cameraComboBox";
             this.cameraComboBox.Size = new System.Drawing.Size(121, 21);
             this.cameraComboBox.TabIndex = 33;
@@ -336,7 +277,7 @@
             // blackWhiteCheckBox
             // 
             this.blackWhiteCheckBox.AutoSize = true;
-            this.blackWhiteCheckBox.Location = new System.Drawing.Point(34, 376);
+               this.blackWhiteCheckBox.Location = new System.Drawing.Point(49, 408);
             this.blackWhiteCheckBox.Name = "blackWhiteCheckBox";
             this.blackWhiteCheckBox.Size = new System.Drawing.Size(86, 17);
             this.blackWhiteCheckBox.TabIndex = 38;
@@ -346,7 +287,7 @@
             // photosFromAbroadCheckBox
             // 
             this.photosFromAbroadCheckBox.AutoSize = true;
-            this.photosFromAbroadCheckBox.Location = new System.Drawing.Point(161, 252);
+               this.photosFromAbroadCheckBox.Location = new System.Drawing.Point(176, 284);
             this.photosFromAbroadCheckBox.Name = "photosFromAbroadCheckBox";
             this.photosFromAbroadCheckBox.Size = new System.Drawing.Size(121, 17);
             this.photosFromAbroadCheckBox.TabIndex = 39;
@@ -356,7 +297,7 @@
             // overSeaLevelCheckBox
             // 
             this.overSeaLevelCheckBox.AutoSize = true;
-            this.overSeaLevelCheckBox.Location = new System.Drawing.Point(161, 275);
+               this.overSeaLevelCheckBox.Location = new System.Drawing.Point(176, 307);
             this.overSeaLevelCheckBox.Name = "overSeaLevelCheckBox";
             this.overSeaLevelCheckBox.Size = new System.Drawing.Size(63, 17);
             this.overSeaLevelCheckBox.TabIndex = 40;
@@ -370,11 +311,21 @@
             "100 - 200",
             "200 - 800",
             "> 800"});
-            this.isoComboBox.Location = new System.Drawing.Point(140, 200);
+               this.isoComboBox.Location = new System.Drawing.Point(155, 232);
             this.isoComboBox.Name = "isoComboBox";
             this.isoComboBox.Size = new System.Drawing.Size(121, 21);
             this.isoComboBox.TabIndex = 41;
             // 
+               // settingsEditor
+               // 
+               this.settingsEditor.Location = new System.Drawing.Point(15, 92);
+               this.settingsEditor.Name = "settingsEditor";
+               this.settingsEditor.Size = new System.Drawing.Size(134, 23);
+               this.settingsEditor.TabIndex = 42;
+               this.settingsEditor.Text = "Edytuj reguły";
+               this.settingsEditor.UseVisualStyleBackColor = true;
+               this.settingsEditor.Click += new System.EventHandler(this.settingsEditor_Click);
+               // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(140, 349);
@@ -386,6 +337,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+               this.ClientSize = new System.Drawing.Size(737, 485);
+               this.Controls.Add(this.settingsEditor);
             this.ClientSize = new System.Drawing.Size(737, 462);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.isoComboBox);
@@ -395,10 +348,6 @@
             this.Controls.Add(this.cameraComboBox);
             this.Controls.Add(this.formatComboBox);
             this.Controls.Add(this.resolutionComboBox);
-            this.Controls.Add(this.peopleEditButton);
-            this.Controls.Add(this.mainColourEditButton);
-            this.Controls.Add(this.geoEditButton);
-            this.Controls.Add(this.cameraEditButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.groupCheckBox);
             this.Controls.Add(this.mainColourCheckBox);
@@ -412,13 +361,13 @@
             this.Controls.Add(this.formatCheckBox);
             this.Controls.Add(this.resolutionCheckBox);
             this.Controls.Add(this.startClassificationButton);
-            this.Controls.Add(this.resolutionEditButton);
-            this.Controls.Add(this.formatEditButton);
             this.Controls.Add(this.chosenDirectoryLabel);
             this.Controls.Add(this.refreshImagesButton);
             this.Controls.Add(this.chosenDirectoryBox);
             this.Controls.Add(this.directoryPicker);
             this.Controls.Add(this.listView);
+               this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+               this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -434,8 +383,6 @@
         private System.Windows.Forms.TextBox chosenDirectoryBox;
         private System.Windows.Forms.Button refreshImagesButton;
         private System.Windows.Forms.Label chosenDirectoryLabel;
-        private System.Windows.Forms.Button formatEditButton;
-        private System.Windows.Forms.Button resolutionEditButton;
         private System.Windows.Forms.Button startClassificationButton;
         private System.Windows.Forms.CheckBox resolutionCheckBox;
         private System.Windows.Forms.CheckBox formatCheckBox;
@@ -449,10 +396,6 @@
         private System.Windows.Forms.CheckBox mainColourCheckBox;
         private System.Windows.Forms.CheckBox groupCheckBox;
         private System.Windows.Forms.Button filterButton;
-        private System.Windows.Forms.Button cameraEditButton;
-        private System.Windows.Forms.Button mainColourEditButton;
-        private System.Windows.Forms.Button geoEditButton;
-        private System.Windows.Forms.Button peopleEditButton;
         private System.Windows.Forms.ComboBox resolutionComboBox;
         private System.Windows.Forms.ComboBox formatComboBox;
         private System.Windows.Forms.ComboBox cameraComboBox;
@@ -460,6 +403,7 @@
         private System.Windows.Forms.CheckBox photosFromAbroadCheckBox;
         private System.Windows.Forms.CheckBox overSeaLevelCheckBox;
         private System.Windows.Forms.ComboBox isoComboBox;
+        private System.Windows.Forms.Button settingsEditor;
         private System.Windows.Forms.TextBox textBox1;
     }
 }
