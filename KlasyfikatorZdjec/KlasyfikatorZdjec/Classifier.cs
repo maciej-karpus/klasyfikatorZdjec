@@ -98,12 +98,18 @@ namespace KlasyfikatorZdjec
                     long tmpGreen = 0;
                     long tmpRed = 0;
 
-                    for (int i = 175; i < hist.histogramBlue.Length; i++)
-                    {
-                        tmpBlue += hist.histogramBlue[i];
-                        tmpGreen += hist.histogramGreen[i];
-                        tmpRed += hist.histogramRed[i];
-                    }
+                    long startBlue = (long) (255 * Settings.findSettingByKey(SettingKey.DOMINATING_BLUE_KEY).lowerBound);
+                    long startGreen = (long)(255 * Settings.findSettingByKey(SettingKey.DOMINATING_GREEN_KEY).lowerBound);
+                    long startRed = (long)(255 * Settings.findSettingByKey(SettingKey.DOMINATING_RED_KEY).lowerBound);
+
+                    for (; startBlue < hist.histogramBlue.Length; startBlue++)
+                        tmpBlue += hist.histogramBlue[startBlue];
+
+                    for (; startGreen < hist.histogramGreen.Length; startGreen++)
+                        tmpGreen += hist.histogramGreen[startGreen];
+
+                    for (; startRed < hist.histogramRed.Length; startRed++)
+                        tmpRed += hist.histogramRed[startRed];
 
                     unCImg.blueVal = (double)tmpBlue / (double)hist.pixels;
                     unCImg.redVal = (double)tmpRed / (double)hist.pixels;
