@@ -98,7 +98,7 @@ namespace KlasyfikatorZdjec
                     long tmpGreen = 0;
                     long tmpRed = 0;
 
-                    for (int i = 175; i < hist.histogramBlue.Length; i++)
+                    for (int i = 255; i < hist.histogramBlue.Length; i++)
                     {
                         tmpBlue += hist.histogramBlue[i];
                         tmpGreen += hist.histogramGreen[i];

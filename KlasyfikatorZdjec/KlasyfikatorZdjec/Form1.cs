@@ -272,6 +272,8 @@ namespace KlasyfikatorZdjec
             Classifier.classifyByFaces();
             Classifier.classifyByColors();
             Classifier.classifyByMetadata();
+
+            MessageBox.Show("Ukończono klasyfikację");
         }
 
         private void settingsEditor_Click(object sender, EventArgs e)
