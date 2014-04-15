@@ -8,7 +8,7 @@ namespace KlasyfikatorZdjec
 {
      public enum SettingKey { SMALL_IMG_KEY, MEDIUM_IMG_KEY, LARGE_IMG_KEY, DOMINATING_RED_KEY,
      DOMINATING_GREEN_KEY, DOMINATING_BLUE_KEY, LOW_ISO_KEY, MEDIUM_ISO_KEY, HIGH_ISO_KEY,
-     PORTRAIT_KEY, GROUP_OF_PEOPLE_KEY};
+     PORTRAIT_KEY, GROUP_OF_PEOPLE_KEY, ALTITUDE_KEY};
 
      static class Settings
      {
@@ -16,17 +16,14 @@ namespace KlasyfikatorZdjec
           public static readonly Dictionary<SettingKey, string> settingsDescriptions =
                new Dictionary<SettingKey, string>
                {
-                    {SettingKey.SMALL_IMG_KEY, "Mały rozmiar (megapiksele)"},
                     {SettingKey.MEDIUM_IMG_KEY,"Średni rozmiar (megapiksele)"},
-                    {SettingKey.LARGE_IMG_KEY, "Duży rozmiar (megapiksele)"},
                     {SettingKey.DOMINATING_RED_KEY, "Dominujący czerwony"},
                     {SettingKey.DOMINATING_GREEN_KEY, "Dominujący zielony"},
                     {SettingKey.DOMINATING_BLUE_KEY, "Dominujący niebieski"},
-                    {SettingKey.LOW_ISO_KEY, "Niska wartość ISO"},
                     {SettingKey.MEDIUM_ISO_KEY, "Średnia wartość ISO"},
-                    {SettingKey.HIGH_ISO_KEY, "Wysoka wartość ISO"},
                     {SettingKey.PORTRAIT_KEY, "Portret (twarz [%]"},
-                    {SettingKey.GROUP_OF_PEOPLE_KEY, "Grupa ludzi (min. liczba osób)"}
+                    {SettingKey.GROUP_OF_PEOPLE_KEY, "Grupa ludzi (min. liczba osób)"},
+                    {SettingKey.ALTITUDE_KEY, "Wysokość wyżyn [m]"}
                };
        
           static List<Setting> settingList;
@@ -41,14 +38,14 @@ namespace KlasyfikatorZdjec
           {
                //Stworzenie domyślnego zestawu parametrów
                settingList = new List<Setting>();
-               settingList.Add(new Setting(SettingKey.SMALL_IMG_KEY, 0, 2f, true, false));
                settingList.Add(new Setting(SettingKey.MEDIUM_IMG_KEY, 2f, 4f));
-               settingList.Add(new Setting(SettingKey.LARGE_IMG_KEY, 4f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.DOMINATING_RED_KEY, 0.75f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.DOMINATING_GREEN_KEY, 0.75f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.DOMINATING_BLUE_KEY, 0.75f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.PORTRAIT_KEY, 30, 0, false, true));
                settingList.Add(new Setting(SettingKey.GROUP_OF_PEOPLE_KEY, 3, 0, false, true));
+               settingList.Add(new Setting(SettingKey.ALTITUDE_KEY, 300, 0, false, true));
+
                //TODO - Dopisać reguły do ISO
           }
 

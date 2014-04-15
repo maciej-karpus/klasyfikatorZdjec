@@ -232,7 +232,7 @@
             // 
             // filterButton
             // 
-            this.filterButton.Location = new System.Drawing.Point(144, 442);
+            this.filterButton.Location = new System.Drawing.Point(144, 450);
             this.filterButton.Name = "filterButton";
             this.filterButton.Size = new System.Drawing.Size(75, 23);
             this.filterButton.TabIndex = 25;
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 462);
+            this.ClientSize = new System.Drawing.Size(737, 477);
             this.Controls.Add(this.settingsEditor);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.isoComboBox);

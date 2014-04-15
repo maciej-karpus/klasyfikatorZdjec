@@ -27,7 +27,11 @@ namespace KlasyfikatorZdjec
                 if (cImg != null) 
                 {
                     //Rozdzielczosc
-                    cImg.resolution = unCImg.resolutionX < 1024 && unCImg.resolutionY < 768 ? "małe" : unCImg.resolutionX < 2000 && unCImg.resolutionY < 1000 ? "średnie" : "duże";
+                    var resolutionSetting = Settings.findSettingByKey(SettingKey.MEDIUM_IMG_KEY);
+                    var resolution = (unCImg.resolutionX * unCImg.resolutionY) / 1000000; 
+                    var lowerBound = resolutionSetting.getLowerBound();
+                    var upperBound = resolutionSetting.getUpperBound();
+                    cImg.resolution = resolution < lowerBound  ? "małe" : resolution >= lowerBound && resolution <= upperBound ? "średnie" : "duże";
 
                     //Rozmiar w MB
                     double s = (double) unCImg.size / (1024*1024);
@@ -59,7 +63,9 @@ namespace KlasyfikatorZdjec
                         cImg.isInPoland = false;
 
                     //Wysokosc n.p.m.
-                    cImg.isAboveSeaLevel = unCImg.altitude > 0 ? "wyżyny" : "niziny";
+                    var altitudeSetting = Settings.findSettingByKey(SettingKey.ALTITUDE_KEY);
+                    var highGroundBound = altitudeSetting.getLowerBound();
+                    cImg.isAboveSeaLevel = unCImg.altitude > highGroundBound ? "wyżyny" : "niziny";
                 }
             }
 
