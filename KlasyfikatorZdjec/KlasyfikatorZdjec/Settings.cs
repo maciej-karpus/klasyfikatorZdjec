@@ -33,7 +33,6 @@ namespace KlasyfikatorZdjec
                return settingList;
           }
 
-
           static Settings() 
           {
                //Stworzenie domyślnego zestawu parametrów
@@ -59,7 +58,6 @@ namespace KlasyfikatorZdjec
                var tmp = settingList.Find(s => s.getKey() == key);
                tmp.lowerBound = lower;
                tmp.upperBound = upper;
-               var tmp2 = settingList.Find(s => s.getKey() == key);
           }
      }
 
