@@ -40,11 +40,7 @@ namespace KlasyfikatorZdjec
           {
                foreach (SettingForm form in settingForms)
                {
-                    //
-                    var lower = form.getLowerBound();
-                    var upper = form.getUpperBound();
                     Settings.editSettingByKey(form.getSettingKey(), form.getLowerBound(), form.getUpperBound());
-                    var tmp = Settings.findSettingByKey(form.getSettingKey());
                }
           }
 
