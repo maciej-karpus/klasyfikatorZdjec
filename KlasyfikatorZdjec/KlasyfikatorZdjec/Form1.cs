@@ -82,7 +82,11 @@ namespace KlasyfikatorZdjec
                     uncImg.resolutionY = mexif.GetHeight();
                     uncImg.size = mexif.GetImageSize();
                     uncImg.altitude = mexif.GetAltitude();
-                    
+
+                    double faceOccupancyRatio = 0.0;
+                    int faces = DetectFace.Run(uncImg.path, ref faceOccupancyRatio);
+                    uncImg.faces = faces;
+                    uncImg.faceOccupancy = faceOccupancyRatio;
 
                     Classifier.UNCLASSIFIED_PHOTOS.Add(uncImg);
                     ClassifiedImage cimg = new ClassifiedImage();

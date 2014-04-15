@@ -13,7 +13,7 @@ namespace KlasyfikatorZdjec
     class DetectFace
     {
 
-        public static int Run(string path, ref bool isPortrait)
+        public static int Run(string path, ref double ratio)
         {
 
             Image<Bgr, Byte> image = new Image<Bgr, byte>(path); //Read the files as an 8-bit Bgr image  
@@ -24,7 +24,7 @@ namespace KlasyfikatorZdjec
             gray._EqualizeHist();
 
             //Read the HaarCascade objects
-            HaarCascade face = new HaarCascade("..\\haarcascade_frontalface_alt_tree.xml");
+            HaarCascade face = new HaarCascade("..\\..\\..\\packages\\EmguCV.221.x64.1.5\\haarcascades\\haarcascade_frontalface_alt_tree.xml");
 
             //Detect the faces  from the gray scale image and store the locations as rectangle
             //The first dimensional is the channel
@@ -38,7 +38,7 @@ namespace KlasyfikatorZdjec
 
             //zmienne pomocnicze do zliczania twarzy
             int liczbaTwarzy = 0;
-            string message = "";
+            // string message = "";
 
             foreach (MCvAvgComp f in facesDetected[0])
             {
@@ -55,11 +55,7 @@ namespace KlasyfikatorZdjec
             // sprawdzanie czy portretowe
             if (liczbaTwarzy == 1)
             {
-                double ratio = (double)(facesDetected[0][0].rect.Height * facesDetected[0][0].rect.Width) / (double)(image.Height * image.Width);
-                if (ratio > 0.3)
-                {
-                    isPortrait = true;
-                }
+                ratio = (double)(facesDetected[0][0].rect.Height * facesDetected[0][0].rect.Width) / (double)(image.Height * image.Width);
             }
 
             ////messagebox z iloscia twarzy, pomocniczy do testow

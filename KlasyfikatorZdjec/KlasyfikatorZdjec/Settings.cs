@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace KlasyfikatorZdjec
 {
      public enum SettingKey { SMALL_IMG_KEY, MEDIUM_IMG_KEY, LARGE_IMG_KEY, DOMINATING_RED_KEY,
-     DOMINATING_GREEN_KEY, DOMINATING_BLUE_KEY, LOW_ISO_KEY, MEDIUM_ISO_KEY, HIGH_ISO_KEY};
+     DOMINATING_GREEN_KEY, DOMINATING_BLUE_KEY, LOW_ISO_KEY, MEDIUM_ISO_KEY, HIGH_ISO_KEY,
+     PORTRAIT_KEY, GROUP_OF_PEOPLE_KEY};
 
      static class Settings
      {
@@ -23,7 +24,9 @@ namespace KlasyfikatorZdjec
                     {SettingKey.DOMINATING_BLUE_KEY, "Dominujący niebieski"},
                     {SettingKey.LOW_ISO_KEY, "Niska wartość ISO"},
                     {SettingKey.MEDIUM_ISO_KEY, "Średnia wartość ISO"},
-                    {SettingKey.HIGH_ISO_KEY, "Wysoka wartość ISO"}
+                    {SettingKey.HIGH_ISO_KEY, "Wysoka wartość ISO"},
+                    {SettingKey.PORTRAIT_KEY, "Portret (twarz [%]"},
+                    {SettingKey.GROUP_OF_PEOPLE_KEY, "Grupa ludzi (min. liczba osób)"}
                };
        
           static List<Setting> settingList;
@@ -44,6 +47,8 @@ namespace KlasyfikatorZdjec
                settingList.Add(new Setting(SettingKey.DOMINATING_RED_KEY, 0.75f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.DOMINATING_GREEN_KEY, 0.75f, 0f, false, true));
                settingList.Add(new Setting(SettingKey.DOMINATING_BLUE_KEY, 0.75f, 0f, false, true));
+               settingList.Add(new Setting(SettingKey.PORTRAIT_KEY, 30, 0, false, true));
+               settingList.Add(new Setting(SettingKey.GROUP_OF_PEOPLE_KEY, 3, 0, false, true));
                //TODO - Dopisać reguły do ISO
           }
 

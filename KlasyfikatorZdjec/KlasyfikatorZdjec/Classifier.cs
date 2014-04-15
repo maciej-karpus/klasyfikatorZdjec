@@ -68,12 +68,14 @@ namespace KlasyfikatorZdjec
         // TODO
         public static void classifyByFaces()
         {
-            bool isPortrait = false;
-            foreach (ClassifiedImage cImg in PHOTOS_CLASSIFIED)
+            foreach (UnclassifiedImage unCImg in UNCLASSIFIED_PHOTOS)
             {
-                int faces = DetectFace.Run(cImg.path, ref isPortrait);
-                cImg.isPortrait = faces == 1 ? true : false;
-                cImg.isGroupOfPeople = faces > 1 ? true : false;
+                ClassifiedImage cImg = PHOTOS_CLASSIFIED.Find(s => s.path == unCImg.path);
+                if (cImg != null)
+                {
+                    cImg.isPortrait = unCImg.faceOccupancy >= Settings.findSettingByKey(SettingKey.PORTRAIT_KEY).lowerBound/100 ? true : false;
+                    cImg.isGroupOfPeople = unCImg.faces >= Settings.findSettingByKey(SettingKey.GROUP_OF_PEOPLE_KEY).lowerBound ? true : false;
+                }
             }
         }
 

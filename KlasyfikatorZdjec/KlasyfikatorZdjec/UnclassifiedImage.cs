@@ -14,6 +14,8 @@ namespace KlasyfikatorZdjec
         public String path;
         [XmlAttribute("twarze")]
         public int faces;
+        [XmlAttribute("zajetoscTwarzy")]
+        public double faceOccupancy;
 
         [XmlAttribute("czerwony")]
         public double redVal;
@@ -57,7 +59,7 @@ namespace KlasyfikatorZdjec
         [XmlAttribute("wysokoscNadPozMorza")]
         public double altitude;
 
-        public UnclassifiedImage(string path, int faces, double redVal, double greenVal, double blueVal,
+        public UnclassifiedImage(string path, int faces, double faceOccupancy, double redVal, double greenVal, double blueVal,
             int resolutionX, int resolutionY, string format, string cameraModel, string dateTaken, int iso,
             string latitudeRef, double latitudeDegrees, double latitudeMinutes, double latitudeSeconds,
             string longitudeRef, double longitudeDegrees, double longitudeMinutes, double longitudeSeconds,
@@ -65,6 +67,7 @@ namespace KlasyfikatorZdjec
         {
             this.path = path;
             this.faces = faces;
+            this.faceOccupancy = faceOccupancy;
             this.redVal = redVal;
             this.greenVal = greenVal;
             this.blueVal = blueVal;
@@ -90,7 +93,7 @@ namespace KlasyfikatorZdjec
 
         public UnclassifiedImage()
         {
-            new UnclassifiedImage("", 0, 0.0, 0.0, 0.0, 0, 0, "", "", "", 0, "",  0.0, 0.0, 0.0, "", 0.0, 0.0, 0.0, 0.0);
+            new UnclassifiedImage("", 0, 0.0, 0.0, 0.0, 0.0, 0, 0, "", "", "", 0, "",  0.0, 0.0, 0.0, "", 0.0, 0.0, 0.0, 0.0);
         }
     }
 }
