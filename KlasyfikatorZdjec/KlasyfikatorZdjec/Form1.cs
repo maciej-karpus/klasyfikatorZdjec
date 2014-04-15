@@ -22,7 +22,7 @@ namespace KlasyfikatorZdjec
 
         private string[] getAllImagesFromDirectory(string directory)
         {
-            string[] extensions = { "jpg", "jpeg", "png", "bmp" };
+            string[] extensions = { "jpg", "jpeg", "png", "bmp", "gif" };
             string[] files = Directory.GetFiles(directory, "*.*")
                 .Where(f => extensions.Contains(f.Split('.').Last().ToLower())).ToArray();
 
